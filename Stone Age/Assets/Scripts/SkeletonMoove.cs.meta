@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aa5720f9daeac6c4fab3ec7848e43295
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - skeletonEffect: {instanceID: 0}
+  - scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  - savedSheepEvent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
