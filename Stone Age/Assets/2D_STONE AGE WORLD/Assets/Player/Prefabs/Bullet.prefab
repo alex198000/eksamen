@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateDirection: {x: 0, y: 0, z: 1}
-  rotateSpeed: -770
+  rotateSpeed: -145
 --- !u!1 &4605345831321986930
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb5ec83835ce8e4b87d3366ec967c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBullet: 170
+  speedBullet: 250
   rb: {fileID: -6874064704924147101}
   explosionShot: {fileID: 8789293347002731060, guid: 47a51187448e50146bfbbdb7e14ab5f2, type: 3}
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &4377563290036183005
 BoxCollider2D:
   m_ObjectHideFlags: 0

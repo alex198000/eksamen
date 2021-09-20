@@ -49,6 +49,10 @@ public class MenuScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("Music1eff", 1);
         }
+        if (!PlayerPrefs.HasKey("LevelSave"))
+        {
+            PlayerPrefs.SetInt("LevelSave", 1);
+        }
     }
     void Start()
     {

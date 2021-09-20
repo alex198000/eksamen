@@ -11,14 +11,24 @@ public class BulletScript : MonoBehaviour
     [SerializeField] private GameEvent scoreEvent;
     [SerializeField] private GameEvent recordEvent;
 
-    private void Start()
-    {
-        rb.velocity = transform.right * speedBullet * Time.deltaTime;
-    }
+    //private void Start()                                                                        //работает рандомно из за пула??
+    //{
+    //    rb.velocity = transform.right * speedBullet * Time.deltaTime;
+    //}
+    //private void OnEnable()                                                               //работает рандомно из за пула??
+    //{
+    //    rb.velocity = transform.right * speedBullet * Time.deltaTime;
+    //}
     //private void FixedUpdate()                                                        //если не корректно работает из старта
     //{
     //    rb.velocity = transform.right * speedBullet * Time.fixedDeltaTime;
     //}
+    private void OnEnable()
+    {
+        //rb.velocity = transform.right * speedBullet * Time.deltaTime;
+
+        rb.AddForce(transform.right * speedBullet);
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
