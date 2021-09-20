@@ -28,6 +28,8 @@ public class HealthScript : MonoBehaviour
     [SerializeField] private GameObject dotInstr;
     [SerializeField] private GameObject danger;
     [SerializeField] private GameObject eatFruit;
+    [SerializeField] private GameObject defExp;
+    [SerializeField] private GameObject winExp;
 
     private void Start()
     {
@@ -134,8 +136,8 @@ public class HealthScript : MonoBehaviour
 
         if (otherCol.gameObject.tag == "superMushroom")                       // контакт с супер грибом для перехода к новому уровню
         {
-            GameObject fru = Instantiate(eatFruit, transform.position, transform.rotation);
-            Destroy(fru, 5f);
+            GameObject win = Instantiate(winExp, transform.position, transform.rotation);
+            Destroy(win, 5f);
             winGame.SetActive(true);
             gameObject.SetActive(false);
             spawnPlayer = new Vector3(-2, -2, 0);
@@ -187,6 +189,8 @@ public class HealthScript : MonoBehaviour
         hp = 0;
         scoreManager.Hunger = hp;
         healthBar.SetHealth(hp);
+        GameObject def = Instantiate(defExp, transform.position, transform.rotation);
+        Destroy(def, 5f);
         sceneDrive.UpdateScore();                             // обновляем юай здоровья
     }
 

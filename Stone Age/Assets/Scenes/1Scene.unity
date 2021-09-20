@@ -25151,7 +25151,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2062993, y: 1}
+    m_SensorSize: {x: 2.2692914, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -52900,6 +52900,8 @@ MonoBehaviour:
   dotInstr: {fileID: 1380724922}
   danger: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
   eatFruit: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  defExp: {fileID: 8789293347002731060, guid: a2814ce46a6641441b90101836de581b, type: 3}
+  winExp: {fileID: 8789293347002731060, guid: bbf86c38a1df24a4382e8282f9105266, type: 3}
 --- !u!1 &967625348515811493
 GameObject:
   m_ObjectHideFlags: 0
