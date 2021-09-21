@@ -3371,7 +3371,7 @@ MonoBehaviour:
   skeletonProperties:
   - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
   - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
-  healthScript: {fileID: 0}
+  healthScript: {fileID: 967619291639319324}
   waveCount: 9
   skeletonCount: 2
 --- !u!1 &404010242
@@ -9445,7 +9445,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2692914, y: 1}
+    m_SensorSize: {x: 1.9149606, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

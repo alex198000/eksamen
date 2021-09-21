@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7782302574447357536}
   - component: {fileID: 4722624772760792974}
   m_Layer: 0
-  m_Name: ParticleFruitr 1
+  m_Name: ParticleDefeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.25, g: 1, b: 0, a: 1}
+      maxColor: {r: 0.76327807, g: 0.7830189, b: 0.40997687, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

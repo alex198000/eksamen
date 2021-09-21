@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    public GameObject pLost;
-    public GameObject p1effectLost;
+    [SerializeField] private GameObject pLost;
+    [SerializeField] private GameObject p1effectLost;
     [SerializeField] private Image soundLock;
     [SerializeField] private Image musicLock;
     [SerializeField] private Image effectLock;

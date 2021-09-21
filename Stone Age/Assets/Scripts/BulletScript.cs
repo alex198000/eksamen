@@ -11,22 +11,9 @@ public class BulletScript : MonoBehaviour
     [SerializeField] private GameEvent scoreEvent;
     [SerializeField] private GameEvent recordEvent;
 
-    //private void Start()                                                                        //работает рандомно из за пула??
-    //{
-    //    rb.velocity = transform.right * speedBullet * Time.deltaTime;
-    //}
-    //private void OnEnable()                                                               //работает рандомно из за пула??
-    //{
-    //    rb.velocity = transform.right * speedBullet * Time.deltaTime;
-    //}
-    //private void FixedUpdate()                                                        //если не корректно работает из старта
-    //{
-    //    rb.velocity = transform.right * speedBullet * Time.fixedDeltaTime;
-    //}
+    public int damageStone = 1;
     private void OnEnable()
     {
-        //rb.velocity = transform.right * speedBullet * Time.deltaTime;
-
         rb.AddForce(transform.right * speedBullet);
     }
 
@@ -39,12 +26,6 @@ public class BulletScript : MonoBehaviour
             gameObject.SetActive(false);
             GameObject effectShot = Instantiate(explosionShot, transform.position, transform.rotation);
             Destroy(effectShot, 2f);
-            col.gameObject.SetActive(false);
-            scoreManager.ScoreVal(100);
-            scoreManager.RecordVal();
-            recordEvent.Raise();
-            scoreEvent.Raise();
-
         }
     }
 }

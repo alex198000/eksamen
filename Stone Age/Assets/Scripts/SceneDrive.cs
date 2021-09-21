@@ -17,8 +17,8 @@ public class SceneDrive : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private GameEvent lifeEvent;
     public int unlockLevel;
-    public GameObject p1effectLost;
-    public GameObject pLost;
+    [SerializeField] private GameObject p1effectLost;
+    [SerializeField] private GameObject pLost;
 
 
     private void Awake()

@@ -41,9 +41,9 @@ public class SkeletonSpawner : MonoBehaviour
         skeleton.SetActive(true);
         skeleton.transform.SetParent(SkeletonManager);
 
-        int randomSheepPropertyIndex = Random.Range(0, skeletonProperties.Count);
+        int randomSkeletonPropertyIndex = Random.Range(0, skeletonProperties.Count);
 
-        skeleton.GetComponent<SkeletonMoove>().SetPropertyToSkeleton(skeletonProperties[randomSheepPropertyIndex]);
+        skeleton.GetComponent<SkeletonMoove>().SetPropertyToSkeleton(skeletonProperties[randomSkeletonPropertyIndex]);
     }
     }
 

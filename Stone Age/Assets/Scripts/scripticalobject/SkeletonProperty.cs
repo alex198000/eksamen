@@ -10,8 +10,9 @@ public class SkeletonProperty : ScriptableObject
     [SerializeField] private Vector3 skeletonScale;
     [SerializeField] private Material skeletonColor;
     //[SerializeField] private Quaternion skeletonRotate;      //поворот спрайта
-
-
+    [SerializeField] private Sprite skeletonSprite;
+    [SerializeField] private int skeletonHealth;
+    [SerializeField] private Vector2 skeletonColl;
 
     public float SpeedSkeleton
     {
@@ -36,6 +37,33 @@ public class SkeletonProperty : ScriptableObject
             return skeletonColor;
         }
 
+    }
+
+    public Sprite SkeletonSprite
+    {
+        get
+        {
+            return skeletonSprite;
+        }
+
+    }
+
+    public int SkeletonHealth
+    {
+        get
+        {
+            return skeletonHealth;
+        }
+
+    }
+
+    public Vector2 SkeletonColl
+    {
+
+        get
+        {
+            return skeletonColl;
+        }
     }
     //public Quaternion SkeletonRotate
     //{

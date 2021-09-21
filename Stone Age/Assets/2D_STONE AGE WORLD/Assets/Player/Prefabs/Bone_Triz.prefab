@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2235517093124349143}
   - component: {fileID: 2235517093124349136}
   - component: {fileID: 1166002623}
+  - component: {fileID: 3949549285442048122}
   m_Layer: 0
   m_Name: Bone_Triz
   m_TagString: Skeleton
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300032, guid: 2c06fc137f4d6824aa6eaaf5fc8ec5ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -146,11 +147,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diraction: {x: -1, y: 0, z: 0}
-  skeletonEffect: {fileID: 8789293347002731060, guid: bab1a46ca9a9e044785261d808219538, type: 3}
-  skeletonWin: {fileID: 8789293347002731060, guid: 87986ce575389e9488b568c34d7ed9fa, type: 3}
+  spriteSkeleton: {fileID: 0}
+  skeletonHealth: {fileID: 0}
+  colider: {fileID: 0}
   skeletonProperty: {fileID: 0}
-  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+--- !u!114 &3949549285442048122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235517093124349137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711c35115bb527f49866b85c879ba129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpSkelet: 0
+  hpMaxSkelet: 2
   hungerEvent: {fileID: 11400000, guid: 7d3f09e679193644db7191e0d0964d59, type: 2}
   lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
   scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
   recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  skeletonWin: {fileID: 8789293347002731060, guid: b4198144e76372c46902282630ee6877, type: 3}
+  skeletonEffect: {fileID: 8789293347002731060, guid: bab1a46ca9a9e044785261d808219538, type: 3}
+  skeletonDeath: {fileID: 8789293347002731060, guid: 87986ce575389e9488b568c34d7ed9fa, type: 3}
