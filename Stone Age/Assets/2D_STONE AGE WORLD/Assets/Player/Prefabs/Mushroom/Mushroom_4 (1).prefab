@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8718793824168233325}
   - component: {fileID: 8718793824168233315}
   - component: {fileID: 8718793824168233314}
-  - component: {fileID: 5043306782677291693}
+  - component: {fileID: -713869368082817722}
   m_Layer: 0
   m_Name: Mushroom_4 (1)
   m_TagString: Muhomor
@@ -195,7 +195,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3886399, y: 1.5829599}
   m_EdgeRadius: 0
---- !u!114 &5043306782677291693
+--- !u!114 &-713869368082817722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,6 +204,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718793824168233324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8129e5b7673566442a880afc890de579, type: 3}
+  m_Script: {fileID: 11500000, guid: 9712019f3cac62c4d83ca3d301a30530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

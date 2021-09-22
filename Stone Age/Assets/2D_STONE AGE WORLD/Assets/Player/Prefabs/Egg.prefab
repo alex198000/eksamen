@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2497317634844692229}
   - component: {fileID: 2497317634844692230}
   - component: {fileID: 1835204809405578981}
+  - component: {fileID: 3334367952908647332}
   m_Layer: 0
-  m_Name: Orange
+  m_Name: Egg
   m_TagString: fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,3 +133,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3334367952908647332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497317634844692231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fca4698aed7104384c123bf1f8bfbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

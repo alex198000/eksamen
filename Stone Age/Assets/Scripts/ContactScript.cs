@@ -19,16 +19,20 @@ public class ContactScript : MonoBehaviour
     [SerializeField] private GameObject winGame;
     [SerializeField] private GameObject winExp;
     [SerializeField] private GameObject eatFruit;
-
-    void Start()
-    {
-        
-    }
-
+    private FruitAndMushrom fruitAndMushrom = FruitAndMushrom.SuperMushroom;
+    
     void OnTriggerEnter2D(Collider2D otherCol)
     {
-        if (otherCol.gameObject.tag == "Muhomor")                                     //контакт с мухомором, минус жизнь
+        FruitScript fruitScript = otherCol.gameObject.GetComponent<FruitScript>();
+        MushroomScript mushroomScript = otherCol.gameObject.GetComponent<MushroomScript>();
+        WaterScript waterScript = otherCol.gameObject.GetComponent<WaterScript>();
+        MuhomorScript muhomorScript = otherCol.gameObject.GetComponent<MuhomorScript>();
+        PogankaScript pogankaScript = otherCol.gameObject.GetComponent<PogankaScript>();
+        SuperMushroomScript superMushroomScript = otherCol.gameObject.GetComponent<SuperMushroomScript>();
+
+        if (muhomorScript != null)                                     //контакт с мухомором, минус жизнь
         {
+            fruitAndMushrom = FruitAndMushrom.Muhomor;
             if (lifeScript.life > 1)
             {
                 GameObject dangerous = Instantiate(danger, transform.position, transform.rotation);
@@ -50,8 +54,9 @@ public class ContactScript : MonoBehaviour
             }
         }
 
-        if (otherCol.gameObject.tag == "Water")                                //контакт с водой
+        if (waterScript != null)                                //контакт с водой
         {
+            fruitAndMushrom = FruitAndMushrom.Water;
             if (lifeScript.life > 1)
             {
                 gameObject.transform.position = lifeScript.spawnPlayerCurent;
@@ -71,8 +76,9 @@ public class ContactScript : MonoBehaviour
             }
         }
 
-        if (otherCol.gameObject.tag == "poganka")                     //контакт с поганкой, ущерб
+        if (pogankaScript != null)                     //контакт с поганкой, ущерб
         {
+            fruitAndMushrom = FruitAndMushrom.Poganka;
             healthScript.TakeDamage(10);
             healthScript.healthBar.SetHealth(healthScript.hp);
             Destroy(otherCol.gameObject);
@@ -80,8 +86,9 @@ public class ContactScript : MonoBehaviour
             Destroy(dangerous, 5f);
         }
 
-        if (otherCol.gameObject.tag == "Mushroom")                 //контакт с полезным грибом
+        if (mushroomScript != null)                 //контакт с полезным грибом
         {
+            fruitAndMushrom = FruitAndMushrom.Mushroom;
             GameObject fru = Instantiate(eatFruit, transform.position, transform.rotation);
             Destroy(fru, 5f);
             healthScript.PlusDamage(10);
@@ -96,8 +103,9 @@ public class ContactScript : MonoBehaviour
             }
         }
 
-        if (otherCol.gameObject.tag == "fruit")                  //контакт с фруктами
+        if (fruitScript != null)                  //контакт с фруктами
         {
+            fruitAndMushrom = FruitAndMushrom.Fruit;
             GameObject fru = Instantiate(eatFruit, transform.position, transform.rotation);
             Destroy(fru, 5f);
             healthScript.PlusDamage(20);
@@ -113,8 +121,9 @@ public class ContactScript : MonoBehaviour
             }
         }
 
-        if (otherCol.gameObject.tag == "superMushroom")                       // контакт с супер грибом для перехода к новому уровню
+        if (superMushroomScript != null)                       // контакт с супер грибом для перехода к новому уровню
         {
+            fruitAndMushrom = FruitAndMushrom.SuperMushroom;
             GameObject win = Instantiate(winExp, transform.position, transform.rotation);
             Destroy(win, 5f);
             winGame.SetActive(true);
@@ -141,6 +150,7 @@ public class ContactScript : MonoBehaviour
 
         if (otherCol.gameObject.tag == "save1")                  //контакт с точкой сохранения1
         {
+            fruitAndMushrom = FruitAndMushrom.DotSave1;
             if (otherCol.transform.position.x > lifeScript.spawnPlayerCurent.x)                                                 //толькр если точка сохранения больше текущей по х
             {
                 StartCoroutine(DotContr());
@@ -150,6 +160,7 @@ public class ContactScript : MonoBehaviour
         }
         if (otherCol.gameObject.tag == "save2")                  //контакт с точкой сохранения2
         {
+            fruitAndMushrom = FruitAndMushrom.DotSave2;
             if (otherCol.transform.position.x > lifeScript.spawnPlayerCurent.x)
             {
                 StartCoroutine(DotContr());
