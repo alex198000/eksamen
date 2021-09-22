@@ -6,29 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneDrive : MonoBehaviour
 {
+    public int unlockLevel;
+    [SerializeField] private GameObject p1effectLost;
+    [SerializeField] private GameObject pLost;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject loseGame;
     [SerializeField] private GameObject winGame;    
     [SerializeField] private GameObject exitMenu;
-    [SerializeField] private GameObject canvasMenu;    
-    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private GameObject canvasMenu;        
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI hungerText;
     [SerializeField] private TextMeshProUGUI lifeText;
-    [SerializeField] private GameEvent lifeEvent;
-    public int unlockLevel;
-    [SerializeField] private GameObject p1effectLost;
-    [SerializeField] private GameObject pLost;
+    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private HungerManager hungerManager;
+    [SerializeField] private GameEvent lifeEvent;    
 
-
-    private void Awake()
-    {
-             
-    }
     void Start()
     {
-       
-
         if (PlayerPrefs.GetInt("Music") == 0)
         {
             pLost.GetComponent<AudioSource>().mute = true;
@@ -126,8 +120,8 @@ public class SceneDrive : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = scoreManager.Score.ToString();
-        hungerText.text = scoreManager.Hunger.ToString();
-        lifeText.text = scoreManager.Life.ToString();
+        hungerText.text = hungerManager.Hunger.ToString();
+        lifeText.text = hungerManager.Life.ToString();
     }
 
     void ESCbutton()                             // кнопка esc или  шаг назад на телефоне

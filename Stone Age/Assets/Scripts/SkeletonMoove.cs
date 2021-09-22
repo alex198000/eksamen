@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonMoove : MonoBehaviour
-{
-    
-    [SerializeField] private Vector3 diraction;
+{   
     private Rigidbody rb;
     private MeshRenderer mr;
     [SerializeField] private SpriteRenderer spriteSkeleton;
     [SerializeField] private SkeletonHealth skeletonHealth;
     [SerializeField] private BoxCollider2D colider;   
-    [SerializeField] private SkeletonProperty skeletonProperty;  
-    
+    [SerializeField] private SkeletonProperty skeletonProperty;
+    [SerializeField] private Vector3 diraction;
+
 
     private void Awake()
     {
@@ -20,24 +19,20 @@ public class SkeletonMoove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         colider = GetComponent<BoxCollider2D>();
         spriteSkeleton = GetComponent<SpriteRenderer>();
-        skeletonHealth = GetComponent<SkeletonHealth>();
-        
+        skeletonHealth = GetComponent<SkeletonHealth>();        
     }
 
     void Update()
     {
         transform.Translate(diraction * skeletonProperty.SpeedSkeleton * Time.deltaTime);
-    }
-    
-    
-
-    
+    }    
 
         public void SetPropertyToSkeleton(SkeletonProperty skeletonProperty)
     {
         this.skeletonProperty = skeletonProperty;
         transform.localScale = new Vector3(skeletonProperty.ScaleSkeleton.x, skeletonProperty.ScaleSkeleton.y, skeletonProperty.ScaleSkeleton.z);
         skeletonHealth.hpMaxSkelet = skeletonProperty.SkeletonHealth;
+        skeletonHealth.hpSkelet = skeletonHealth.hpMaxSkelet;
         spriteSkeleton.sprite = skeletonProperty.SkeletonSprite;
         colider.size = skeletonProperty.SkeletonColl;
         //mr.material = skeletonProperty.SkeletonColor;

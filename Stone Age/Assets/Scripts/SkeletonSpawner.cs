@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class SkeletonSpawner : MonoBehaviour
 {
-    [SerializeField] private string skeletonTag;
-    [SerializeField] private Vector3 spawnPointPosition;
-    [SerializeField] private Vector3 dist;
-    [SerializeField] private float spawnRate;
-    [SerializeField] private float waveRate;
+    [SerializeField] private string skeletonTag;    
     [SerializeField] private GameObject player;
     [SerializeField] private Transform SkeletonManager;
     [SerializeField] private List<SkeletonProperty> skeletonProperties;
     [SerializeField] private HealthScript healthScript;
     [SerializeField] private int waveCount;
     [SerializeField] private int skeletonCount;
+    [SerializeField] private float spawnRate;
+    [SerializeField] private float waveRate;
+    [SerializeField] private Vector3 spawnPointPosition;
+    [SerializeField] private Vector3 dist;
 
 
     void Start()
     {
-        
         StartCoroutine(SpawnSkeleton());
     }
     private void Update()
@@ -29,22 +28,19 @@ public class SkeletonSpawner : MonoBehaviour
 
     void CreateSkeleton()
     {
-        spawnPointPosition = new Vector3(dist.x +6, dist.y +8, dist.z);                                     //спавн на опр расстоянии по х у z
+        spawnPointPosition = new Vector3(dist.x + 6, dist.y + 8, dist.z);                                     //спавн на опр расстоянии по х у z
         GameObject skeleton = ObjectPooler.objectPooler.GetPooledObject(skeletonTag);
         if (skeleton != null)
         {
-            
-        
+            skeleton.transform.position = spawnPointPosition;
 
-        skeleton.transform.position = spawnPointPosition;
-       
-        skeleton.SetActive(true);
-        skeleton.transform.SetParent(SkeletonManager);
+            skeleton.SetActive(true);
+            skeleton.transform.SetParent(SkeletonManager);
 
-        int randomSkeletonPropertyIndex = Random.Range(0, skeletonProperties.Count);
+            int randomSkeletonPropertyIndex = Random.Range(0, skeletonProperties.Count);
 
-        skeleton.GetComponent<SkeletonMoove>().SetPropertyToSkeleton(skeletonProperties[randomSkeletonPropertyIndex]);
-    }
+            skeleton.GetComponent<SkeletonMoove>().SetPropertyToSkeleton(skeletonProperties[randomSkeletonPropertyIndex]);
+        }
     }
 
 
@@ -59,7 +55,7 @@ public class SkeletonSpawner : MonoBehaviour
                 CreateSkeleton();
             }
 
-            //skeletonCount += 5; //увеличиваем число спавнящихся скелетов
+            skeletonCount += 2; //увеличиваем число спавнящихся скелетов
 
 
 

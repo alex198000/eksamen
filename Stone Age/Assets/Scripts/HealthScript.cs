@@ -13,7 +13,7 @@ public class HealthScript : MonoBehaviour
     public Vector3 spawnPlayer;
     public Vector3 spawnPlayerCurent;
     [SerializeField] private ScoreManager scoreManager;
-    //[SerializeField] private SkeletonSpawner skeletonSpawner;
+    [SerializeField] private HungerManager hungerManager;
     [SerializeField] private SceneDrive sceneDrive;
     [SerializeField] private GameEvent scoreEvent;
     [SerializeField] private GameEvent recordEvent;
@@ -38,11 +38,11 @@ public class HealthScript : MonoBehaviour
         spawnPlayerCurent = spawnPlayer;
         hp = hpMax;
         healthBar.SetMaxHealth(hpMax);
-        scoreManager.Hunger = hpMax;
+        hungerManager.Hunger = hpMax;
         StartCoroutine(HealthBay());
         life = lifeMax;
         lifeBar.SetMaxLife(lifeMax);
-        scoreManager.Life = lifeMax;
+        hungerManager.Life = lifeMax;
         sceneDrive.UpdateScore();
     }
 
@@ -57,12 +57,12 @@ public class HealthScript : MonoBehaviour
                 gameObject.transform.position = spawnPlayerCurent;
                 StartCoroutine(InstructMuhomor());
                 LifeDamage(1);
-                scoreManager.LifeVal(1);
+                hungerManager.LifeVal(1);
                 lifeEvent.Raise();                
                 lifeBar.SetLife(life);
                 hp = hpMax;
                 healthBar.SetHealth(hp);
-                scoreManager.Hunger = hpMax;
+                hungerManager.Hunger = hpMax;
                 sceneDrive.UpdateScore();
             }
             else
@@ -78,12 +78,12 @@ public class HealthScript : MonoBehaviour
                 gameObject.transform.position = spawnPlayerCurent;
                 StartCoroutine(InstrWeater());
                 LifeDamage(1);
-                scoreManager.LifeVal(1);
+                hungerManager.LifeVal(1);
                 lifeEvent.Raise();
                 lifeBar.SetLife(life);
                 hp = hpMax;
                 healthBar.SetHealth(hp);
-                scoreManager.Hunger = hpMax;
+                hungerManager.Hunger = hpMax;
                 sceneDrive.UpdateScore();
             }
             else
@@ -182,12 +182,12 @@ public class HealthScript : MonoBehaviour
     {
         spawnPlayerCurent = spawnPlayer;
         LifeDamage(1);
-        scoreManager.LifeVal(1);
+        hungerManager.LifeVal(1);
         gameObject.SetActive(false);
         lifeEvent.Raise();
         lifeBar.SetLife(life);
         hp = 0;
-        scoreManager.Hunger = hp;
+        hungerManager.Hunger = hp;
         healthBar.SetHealth(hp);
         GameObject def = Instantiate(defExp, transform.position, transform.rotation);
         Destroy(def, 5f);
@@ -204,14 +204,14 @@ public class HealthScript : MonoBehaviour
             healthBar.SetMaxHealth(hpMax);
         }
 
-        scoreManager.HungerVal(damage);
+        hungerManager.HungerVal(damage);
         hungerEvent.Raise();
         if (hp <= 0)
         { 
             if(life > 1)
             {            
             LifeDamage(1);
-            scoreManager.LifeVal(1);
+            hungerManager.LifeVal(1);
             StartCoroutine(InstructLife());
 
             gameObject.transform.position = spawnPlayerCurent;    //спавн в сохраненную точку
@@ -219,7 +219,7 @@ public class HealthScript : MonoBehaviour
             lifeBar.SetLife(life);
             hp = hpMax;
             healthBar.SetHealth(hp);
-            scoreManager.Hunger = hpMax;
+            hungerManager.Hunger = hpMax;
             sceneDrive.UpdateScore();
             }
             else
@@ -249,7 +249,7 @@ public class HealthScript : MonoBehaviour
         healthBar.SetHealth(hp);
         scoreManager.ScoreVal(plus);
         scoreEvent.Raise();
-        scoreManager.HungerPlus(plus);
+        hungerManager.HungerPlus(plus);
         hungerEvent.Raise();
         if (hp > hpMax)
         {

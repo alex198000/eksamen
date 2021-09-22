@@ -158,13 +158,11 @@ public class MenuScript : MonoBehaviour
         {
             SceneManager.LoadScene(PlayerPrefs.GetInt("LevelSave"));
             scoreManager.Score = 0;
-            scoreManager.Hunger = 250;
         }
         else
         {
             SceneManager.LoadScene(1);
             scoreManager.Score = 0;
-            scoreManager.Hunger = 300;
         }
     }
     public void ExitGame()

@@ -12,10 +12,16 @@ public class SkeletonHealth : MonoBehaviour
     [SerializeField] private GameEvent scoreEvent;
     [SerializeField] private GameEvent recordEvent;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private HungerManager hungerManager;
     [SerializeField] private GameObject skeletonWin;
     [SerializeField] private GameObject skeletonEffect;
     [SerializeField] private GameObject skeletonDeath;
-    void Start()
+    //void Start()
+    //{
+    //    hpSkelet = hpMaxSkelet;
+    //}
+
+    void OnEnable()
     {
         hpSkelet = hpMaxSkelet;
     }
@@ -40,21 +46,16 @@ public class SkeletonHealth : MonoBehaviour
                 GameObject effectDeath = Instantiate(skeletonDeath, transform.position, transform.rotation);
                 Destroy(effectDeath, 2f);
                 gameObject.SetActive(false);
-                hpSkelet = hpMaxSkelet;
+                hpSkelet = hpMaxSkelet;   //GetComponent<SkeletonMoove>().skeletonProperty.SkeletonHealth
                 scoreManager.ScoreVal(100);
                 scoreManager.RecordVal();
                 recordEvent.Raise();
                 scoreEvent.Raise();
             }
-
-
         }
-
-
 
         if (healthScript != null)                         // столкновение с player
         {
-
             GameObject effectShot = Instantiate(skeletonWin, transform.position, transform.rotation);
             Destroy(effectShot, 2f);
             gameObject.SetActive(false);
@@ -64,12 +65,12 @@ public class SkeletonHealth : MonoBehaviour
                 col.gameObject.transform.position = healthScript.spawnPlayerCurent;
 
                 healthScript.LifeDamage(1);
-                scoreManager.LifeVal(1);
+                hungerManager.LifeVal(1);
                 lifeEvent.Raise();
                 healthScript.lifeBar.SetLife(healthScript.life);
                 healthScript.hp = healthScript.hpMax;
                 healthScript.healthBar.SetHealth(healthScript.hp);
-                scoreManager.Hunger = healthScript.hpMax;
+                hungerManager.Hunger = healthScript.hpMax;
                
             }
             else

@@ -1759,19 +1759,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acacd05bca2c5c84ba19d12648b5b05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockLevel: 2
+  p1effectLost: {fileID: 1529710690}
+  pLost: {fileID: 2086982027}
   pauseMenu: {fileID: 105696205}
   loseGame: {fileID: 2057279438}
   winGame: {fileID: 1020144481}
   exitMenu: {fileID: 409886975}
   canvasMenu: {fileID: 294231091}
-  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
   scoreText: {fileID: 903380301}
   hungerText: {fileID: 1449996265}
   lifeText: {fileID: 817396362}
+  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
-  unlockLevel: 2
-  p1effectLost: {fileID: 1529710690}
-  pLost: {fileID: 2086982027}
 --- !u!114 &133317064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8031,18 +8032,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonTag: Skeleton
-  spawnPointPosition: {x: 0, y: 0, z: 0}
-  dist: {x: 5, y: 5, z: 0}
-  spawnRate: 4
-  waveRate: 2
   player: {fileID: 967619291639319320}
   SkeletonManager: {fileID: 160307441}
   skeletonProperties:
   - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
   - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
   healthScript: {fileID: 967619291639319324}
-  waveCount: 9
+  waveCount: 11
   skeletonCount: 2
+  spawnRate: 4
+  waveRate: 2
+  spawnPointPosition: {x: 0, y: 0, z: 0}
+  dist: {x: 5, y: 5, z: 0}
 --- !u!1 &404010242
 GameObject:
   m_ObjectHideFlags: 0
@@ -13498,6 +13499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
 --- !u!1 &706323791
 GameObject:
@@ -20213,7 +20215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - pooledObject: {fileID: 2235517093124349137, guid: a22e67663f49f624d9c0b46cc7007cdd, type: 3}
-    pooledAmount: 5
+    pooledAmount: 10
     willGrow: 1
   - pooledObject: {fileID: 4605345831321986930, guid: 24abe8eef196e3d479c6595293b3002c, type: 3}
     pooledAmount: 8
@@ -20553,6 +20555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
 --- !u!1 &1085174073
 GameObject:
@@ -25151,7 +25154,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2299213, y: 1}
+    m_SensorSize: {x: 2.1322834, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -34433,6 +34436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
 --- !u!1 &1764968873
 GameObject:
@@ -52840,14 +52844,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 200
   playerJumpForce: 7
-  bulletManager: {fileID: 1619413803}
+  fireRate: 1
+  nextFire: 0
   animObject: {fileID: 967495636190904918}
   dubin: {fileID: 967505264903544428}
   player: {fileID: 967619291639319320}
-  animator: {fileID: 0}
-  fireRate: 1
-  nextFire: 0
+  bulletManager: {fileID: 1619413803}
   spawnPoint: {fileID: 354246418}
+  animator: {fileID: 0}
   bulletTag: Bullet
 --- !u!58 &967619291639319322
 CircleCollider2D:
@@ -52886,6 +52890,7 @@ MonoBehaviour:
   spawnPlayer: {x: 0, y: 0, z: 0}
   spawnPlayerCurent: {x: 0, y: 0, z: 0}
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   sceneDrive: {fileID: 133317063}
   scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
   recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}

@@ -8,19 +8,19 @@ public class MyPlayerMovement : MonoBehaviour
     [Header("Player Property")]
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpForce;
-    [SerializeField] private Transform bulletManager;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float nextFire;   
     [SerializeField] private GameObject animObject;
     [SerializeField] private GameObject dubin;
     [SerializeField] private GameObject player;
+    [SerializeField] private Transform bulletManager;
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private Animator animator;
-    private float currentPlayerSpeed;
+    [SerializeField] private string bulletTag;   
     private Rigidbody2D rb;
     private Collider2D col;
-    private bool groundCheck;
-    [SerializeField] private float fireRate;
-    [SerializeField] private float nextFire;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private string bulletTag;
+    private float currentPlayerSpeed;
+    private bool groundCheck;    
     
     private void Awake()
     {

@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5720f9daeac6c4fab3ec7848e43295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diraction: {x: -1, y: 0, z: 0}
   spriteSkeleton: {fileID: 0}
   skeletonHealth: {fileID: 0}
   colider: {fileID: 0}
   skeletonProperty: {fileID: 0}
+  diraction: {x: -1, y: 0, z: 0}
 --- !u!114 &3949549285442048122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
   recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
   scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   skeletonWin: {fileID: 8789293347002731060, guid: b4198144e76372c46902282630ee6877, type: 3}
   skeletonEffect: {fileID: 8789293347002731060, guid: bab1a46ca9a9e044785261d808219538, type: 3}
   skeletonDeath: {fileID: 8789293347002731060, guid: 87986ce575389e9488b568c34d7ed9fa, type: 3}
