@@ -2,37 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class MyPlayerMovement : MonoBehaviour
 {
     [Header("Player Property")]
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpForce;
-    [SerializeField] private float fireRate;
-    [SerializeField] private float nextFire;   
     [SerializeField] private GameObject animObject;
-    [SerializeField] private GameObject dubin;
     [SerializeField] private GameObject player;
-    [SerializeField] private Transform bulletManager;
-    [SerializeField] private Transform spawnPoint;
     [SerializeField] private Animator animator;
-    [SerializeField] private string bulletTag;   
     private Rigidbody2D rb;
-    private Collider2D col;
     private float currentPlayerSpeed;
     private bool groundCheck;    
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = dubin.GetComponent<Collider2D>();
-        spawnPoint = transform.GetChild(1);
-
-        animator = animObject.GetComponent<Animator>();
+    
     }
     private void Update()
     {
-        MooveBut();
+        //MooveBut();
     }
 
     private void FixedUpdate()
@@ -40,7 +30,7 @@ public class MyPlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(currentPlayerSpeed * Time.deltaTime, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(currentPlayerSpeed));
 
-        nextFire -= Time.deltaTime;
+        //nextFire -= Time.deltaTime;
     }
 
     public void RightMove()
@@ -70,73 +60,73 @@ public class MyPlayerMovement : MonoBehaviour
         }
     }
 
-    public void Dubin()
-    {
-        StartCoroutine(DobinCollider());
-    }
+    //public void Dubin()
+    //{
+    //    StartCoroutine(DobinCollider());
+    //}
 
-    public void Fire()
-    {
+    //public void Fire()
+    //{
 
 
-        if (nextFire < 0)
-        {
-            animator.SetTrigger("Fire");
-            GameObject bullet = ObjectPooler.objectPooler.GetPooledObject(bulletTag);
-            if (bullet != null)
-            {
-                bullet.transform.position = spawnPoint.position;
-                bullet.transform.rotation = spawnPoint.rotation;
-                bullet.SetActive(true);            
-                bullet.transform.SetParent(bulletManager);
+    //    if (nextFire < 0)
+    //    {
+    //        animator.SetTrigger("Fire");
+    //        GameObject bullet = ObjectPooler.objectPooler.GetPooledObject(bulletTag);
+    //        if (bullet != null)
+    //        {
+    //            bullet.transform.position = spawnPoint.position;
+    //            bullet.transform.rotation = spawnPoint.rotation;
+    //            bullet.SetActive(true);            
+    //            bullet.transform.SetParent(bulletManager);
             
-            nextFire = fireRate;
-            }
-        }
-    }
+    //        nextFire = fireRate;
+    //        }
+    //    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         groundCheck = true;
     }
 
-    public void MooveBut()
-    {
-        if (Input.GetButton("Jump"))
-        {
-            Jump();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            LeftMove();
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            StopMove();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            RightMove();
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            StopMove();
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            Dubin();
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            Fire();
-        }
-    }
-    IEnumerator DobinCollider()                            //запуск сообщения о потери жизни
-    {
-        animator.SetTrigger("Atak");
-        col.enabled = true;
-        yield return new WaitForSeconds(1);
-        col.enabled = false;
-    }
+    //public void MooveBut()
+    //{
+    //    if (Input.GetButton("Jump"))
+    //    {
+    //        Jump();
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.A))
+    //    {
+    //        LeftMove();
+    //    }
+    //    if (Input.GetKeyUp(KeyCode.A))
+    //    {
+    //        StopMove();
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.D))
+    //    {
+    //        RightMove();
+    //    }
+    //    if (Input.GetKeyUp(KeyCode.D))
+    //    {
+    //        StopMove();
+    //    }
+    //    if (Input.GetKey(KeyCode.Q))
+    //    {
+    //        Dubin();
+    //    }
+    //    if (Input.GetKey(KeyCode.E))
+    //    {
+    //        Fire();
+    //    }
+    //}
+    //IEnumerator DobinCollider()                            //запуск сообщения о потери жизни
+    //{
+    //    animator.SetTrigger("Atak");
+    //    col.enabled = true;
+    //    yield return new WaitForSeconds(1);
+    //    col.enabled = false;
+    //}
 }
 
 
