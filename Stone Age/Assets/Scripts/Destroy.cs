@@ -12,6 +12,7 @@ public class Destroy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         SkeletonMoove skeletonMoove = coll.gameObject.GetComponent<SkeletonMoove>();
+        LifeScript lifeScript = coll.gameObject.GetComponent<LifeScript>();
         HealthScript healthScript = coll.gameObject.GetComponent<HealthScript>();
         BulletScript bulletScript = coll.gameObject.GetComponent<BulletScript>();
         if (skeletonMoove != null)                     //если упал скелет
@@ -23,18 +24,16 @@ public class Destroy : MonoBehaviour
             coll.gameObject.SetActive(false);
         }
 
-        if (healthScript != null)                     //если упал игрок
+        if (lifeScript != null)                     //если упал игрок
         {
-
-
-            if (healthScript.life > 1)                //используем поля healthScript
+            if (lifeScript.life > 1)                //используем поля healthScript
             {
-                coll.gameObject.transform.position = healthScript.spawnPlayerCurent;
+                coll.gameObject.transform.position = lifeScript.spawnPlayerCurent;
 
-                healthScript.LifeDamage(1);
+                lifeScript.LifeDamage(1);
                 hungerManager.LifeVal(1);
                 lifeEvent.Raise();
-                healthScript.lifeBar.SetLife(healthScript.life);
+                lifeScript.lifeBar.SetLife(lifeScript.life);
                 healthScript.hp = healthScript.hpMax;
                 healthScript.healthBar.SetHealth(healthScript.hp);
                 hungerManager.Hunger = healthScript.hpMax;
@@ -42,7 +41,7 @@ public class Destroy : MonoBehaviour
             }
             else
             {
-                healthScript.LastLife();
+                lifeScript.LastLife();
             }
         }
     }

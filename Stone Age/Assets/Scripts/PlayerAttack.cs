@@ -11,16 +11,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D col;
     [SerializeField] private string bulletTag;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         nextFire -= Time.deltaTime;
@@ -31,8 +21,6 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Fire()
     {
-
-
         if (nextFire < 0)
         {
             animator.SetTrigger("Fire");
@@ -48,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
-    IEnumerator DobinCollider()                            //запуск сообщения о потери жизни
+    IEnumerator DobinCollider()            
     {
         animator.SetTrigger("Atak");
         col.enabled = true;

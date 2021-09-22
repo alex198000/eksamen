@@ -17,22 +17,14 @@ public class MyPlayerMovement : MonoBehaviour
     
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-    
+        rb = GetComponent<Rigidbody2D>();    
     }
-    private void Update()
-    {
-        //MooveBut();
-    }
-
+   
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(currentPlayerSpeed * Time.deltaTime, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(currentPlayerSpeed));
-
-        //nextFire -= Time.deltaTime;
     }
-
     public void RightMove()
     {
         currentPlayerSpeed = playerSpeed;
@@ -45,7 +37,6 @@ public class MyPlayerMovement : MonoBehaviour
         // transform.Rotate(0f, 180f, 0f);
         player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
-
    public void StopMove()
     {
         currentPlayerSpeed = 0f;
@@ -60,73 +51,10 @@ public class MyPlayerMovement : MonoBehaviour
         }
     }
 
-    //public void Dubin()
-    //{
-    //    StartCoroutine(DobinCollider());
-    //}
-
-    //public void Fire()
-    //{
-
-
-    //    if (nextFire < 0)
-    //    {
-    //        animator.SetTrigger("Fire");
-    //        GameObject bullet = ObjectPooler.objectPooler.GetPooledObject(bulletTag);
-    //        if (bullet != null)
-    //        {
-    //            bullet.transform.position = spawnPoint.position;
-    //            bullet.transform.rotation = spawnPoint.rotation;
-    //            bullet.SetActive(true);            
-    //            bullet.transform.SetParent(bulletManager);
-            
-    //        nextFire = fireRate;
-    //        }
-    //    }
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         groundCheck = true;
     }
-
-    //public void MooveBut()
-    //{
-    //    if (Input.GetButton("Jump"))
-    //    {
-    //        Jump();
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.A))
-    //    {
-    //        LeftMove();
-    //    }
-    //    if (Input.GetKeyUp(KeyCode.A))
-    //    {
-    //        StopMove();
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.D))
-    //    {
-    //        RightMove();
-    //    }
-    //    if (Input.GetKeyUp(KeyCode.D))
-    //    {
-    //        StopMove();
-    //    }
-    //    if (Input.GetKey(KeyCode.Q))
-    //    {
-    //        Dubin();
-    //    }
-    //    if (Input.GetKey(KeyCode.E))
-    //    {
-    //        Fire();
-    //    }
-    //}
-    //IEnumerator DobinCollider()                            //запуск сообщения о потери жизни
-    //{
-    //    animator.SetTrigger("Atak");
-    //    col.enabled = true;
-    //    yield return new WaitForSeconds(1);
-    //    col.enabled = false;
-    //}
 }
 
 

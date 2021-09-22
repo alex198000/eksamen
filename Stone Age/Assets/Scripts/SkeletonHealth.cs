@@ -30,6 +30,7 @@ public class SkeletonHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         BulletScript bulletScript = col.gameObject.GetComponent<BulletScript>();
+        LifeScript lifeScript = col.gameObject.GetComponent<LifeScript>();
         HealthScript healthScript = col.gameObject.GetComponent<HealthScript>();
 
 
@@ -54,20 +55,20 @@ public class SkeletonHealth : MonoBehaviour
             }
         }
 
-        if (healthScript != null)                         // столкновение с player
+        if (lifeScript != null)                         // столкновение с player
         {
             GameObject effectShot = Instantiate(skeletonWin, transform.position, transform.rotation);
             Destroy(effectShot, 2f);
             gameObject.SetActive(false);
 
-            if (healthScript.life > 1)                //используем поля healthScript
+            if (lifeScript.life > 1)                //используем поля healthScript
             {
-                col.gameObject.transform.position = healthScript.spawnPlayerCurent;
+                col.gameObject.transform.position = lifeScript.spawnPlayerCurent;
 
-                healthScript.LifeDamage(1);
+                lifeScript.LifeDamage(1);
                 hungerManager.LifeVal(1);
                 lifeEvent.Raise();
-                healthScript.lifeBar.SetLife(healthScript.life);
+                lifeScript.lifeBar.SetLife(lifeScript.life);
                 healthScript.hp = healthScript.hpMax;
                 healthScript.healthBar.SetHealth(healthScript.hp);
                 hungerManager.Hunger = healthScript.hpMax;
@@ -75,7 +76,7 @@ public class SkeletonHealth : MonoBehaviour
             }
             else
             {
-                healthScript.LastLife();
+                lifeScript.LastLife();
             }
         }
     }

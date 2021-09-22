@@ -7,194 +7,23 @@ public class HealthScript : MonoBehaviour
     public int hp;
     public int hpMax = 40;
     public HealthBar healthBar;
-    public LifeBar lifeBar;
-    public int life;
-    public int lifeMax = 11;
-    public Vector3 spawnPlayer;
-    public Vector3 spawnPlayerCurent;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private HungerManager hungerManager;
     [SerializeField] private SceneDrive sceneDrive;
+    [SerializeField] private LifeScript lifeScript;
     [SerializeField] private GameEvent scoreEvent;
     [SerializeField] private GameEvent recordEvent;
     [SerializeField] private GameEvent hungerEvent;
     [SerializeField] private GameEvent lifeEvent;    
-    [SerializeField] private GameObject loseGame;
     [SerializeField] private GameObject overGame;
-    [SerializeField] private GameObject winGame;
-    [SerializeField] private GameObject loseInstr;
-    [SerializeField] private GameObject muhomorInstr;
-    [SerializeField] private GameObject lifeInstr;
-    [SerializeField] private GameObject dotInstr;
-    [SerializeField] private GameObject danger;
-    [SerializeField] private GameObject eatFruit;
-    [SerializeField] private GameObject defExp;
-    [SerializeField] private GameObject winExp;
-
     private void Start()
-    {
-        
-        spawnPlayer = gameObject.transform.position;     //начальная точка спавна
-        spawnPlayerCurent = spawnPlayer;
+    {  
         hp = hpMax;
         healthBar.SetMaxHealth(hpMax);
         hungerManager.Hunger = hpMax;
-        StartCoroutine(HealthBay());
-        life = lifeMax;
-        lifeBar.SetMaxLife(lifeMax);
-        hungerManager.Life = lifeMax;
-        sceneDrive.UpdateScore();
+        StartCoroutine(HealthBay());        
     }
-
-    void OnTriggerEnter2D(Collider2D otherCol)
-    {
-        if (otherCol.gameObject.tag == "Muhomor")                                     //контакт с мухомором, минус жизнь
-        {
-            if (life > 1)
-            {
-                GameObject dangerous = Instantiate(danger, transform.position, transform.rotation);
-                Destroy(dangerous, 5f);
-                gameObject.transform.position = spawnPlayerCurent;
-                StartCoroutine(InstructMuhomor());
-                LifeDamage(1);
-                hungerManager.LifeVal(1);
-                lifeEvent.Raise();                
-                lifeBar.SetLife(life);
-                hp = hpMax;
-                healthBar.SetHealth(hp);
-                hungerManager.Hunger = hpMax;
-                sceneDrive.UpdateScore();
-            }
-            else
-            {              
-                LastLife();
-            }
-        }
-
-        if (otherCol.gameObject.tag == "Water")                                //контакт с водой
-        {
-            if (life > 1)
-            {
-                gameObject.transform.position = spawnPlayerCurent;
-                StartCoroutine(InstrWeater());
-                LifeDamage(1);
-                hungerManager.LifeVal(1);
-                lifeEvent.Raise();
-                lifeBar.SetLife(life);
-                hp = hpMax;
-                healthBar.SetHealth(hp);
-                hungerManager.Hunger = hpMax;
-                sceneDrive.UpdateScore();
-            }
-            else
-            {                
-                LastLife();
-            }
-        }
-
-        if (otherCol.gameObject.tag == "poganka")                     //контакт с поганкой, ущерб
-        {
-            TakeDamage(10);
-            healthBar.SetHealth(hp);
-            Destroy(otherCol.gameObject);
-            GameObject dangerous = Instantiate(danger, transform.position, transform.rotation); 
-            Destroy(dangerous, 5f);
-        }
-
-        if (otherCol.gameObject.tag == "Mushroom")                 //контакт с полезным грибом
-        {
-            GameObject fru = Instantiate(eatFruit, transform.position, transform.rotation);
-            Destroy(fru, 5f);
-            PlusDamage(10);
-            healthBar.SetHealth(hp);
-            scoreManager.RecordVal();
-            recordEvent.Raise();          
-            Destroy(otherCol.gameObject);
-            if (hp > hpMax)
-            {
-                hpMax = hp;
-                healthBar.SetMaxHealth(hpMax);
-            }
-        }
-
-        if (otherCol.gameObject.tag == "fruit")                  //контакт с фруктами
-        {
-            GameObject fru = Instantiate(eatFruit, transform.position, transform.rotation);
-            Destroy(fru, 5f);
-            PlusDamage(20);
-            healthBar.SetHealth(hp);
-            Destroy(otherCol.gameObject);
-            scoreManager.RecordVal();
-            recordEvent.Raise();
-           
-            if (hp > hpMax)
-            {
-                hpMax = hp;
-                healthBar.SetMaxHealth(hpMax);
-            }
-        }
-
-        if (otherCol.gameObject.tag == "superMushroom")                       // контакт с супер грибом для перехода к новому уровню
-        {
-            GameObject win = Instantiate(winExp, transform.position, transform.rotation);
-            Destroy(win, 5f);
-            winGame.SetActive(true);
-            gameObject.SetActive(false);
-            spawnPlayer = new Vector3(-2, -2, 0);
-            
-              if (PlayerPrefs.GetInt("LevelSave") < sceneDrive.unlockLevel)
-               {
-                PlayerPrefs.SetInt("LevelSave", sceneDrive.unlockLevel);
-               }
-
-            PlusDamage(100);
-            scoreManager.RecordVal();
-            recordEvent.Raise();          
-            healthBar.SetHealth(hp);
-            Destroy(otherCol.gameObject);
-            
-            if (hp > hpMax)
-              {
-                hpMax = hp;
-                healthBar.SetMaxHealth(hpMax);
-              }
-        }
-        
-        if (otherCol.gameObject.tag == "save1")                  //контакт с точкой сохранения1
-        {
-            if (otherCol.transform.position.x > spawnPlayerCurent.x)                                                 //толькр если точка сохранения больше текущей по х
-            {
-                StartCoroutine(DotContr());
-                spawnPlayerCurent = new Vector3(otherCol.transform.position.x, otherCol.transform.position.y, 0);
-                //skeletonSpawner.spawnPointPosition = new Vector3;
-            }
-        }
-        if (otherCol.gameObject.tag == "save2")                  //контакт с точкой сохранения2
-        {
-            if (otherCol.transform.position.x > spawnPlayerCurent.x)
-            {
-                StartCoroutine(DotContr());
-                spawnPlayerCurent = new Vector3(otherCol.transform.position.x, otherCol.transform.position.y, 0);
-            }
-        }
-    }
-    public void LastLife()                           // последняя жизнь
-    {
-        spawnPlayerCurent = spawnPlayer;
-        LifeDamage(1);
-        hungerManager.LifeVal(1);
-        gameObject.SetActive(false);
-        lifeEvent.Raise();
-        lifeBar.SetLife(life);
-        hp = 0;
-        hungerManager.Hunger = hp;
-        healthBar.SetHealth(hp);
-        GameObject def = Instantiate(defExp, transform.position, transform.rotation);
-        Destroy(def, 5f);
-        sceneDrive.UpdateScore();                             // обновляем юай здоровья
-    }
-
-    public void TakeDamage(int damage)                       //отнимание здоровья от ядов
+    public void TakeDamage(int damage)                       //отнимаем здоровье от ядов
     {
         hp -= damage;
         healthBar.SetHealth(hp);
@@ -208,15 +37,15 @@ public class HealthScript : MonoBehaviour
         hungerEvent.Raise();
         if (hp <= 0)
         { 
-            if(life > 1)
+            if(lifeScript.life > 1)
             {            
-            LifeDamage(1);
+            lifeScript.LifeDamage(1);
             hungerManager.LifeVal(1);
-            StartCoroutine(InstructLife());
+            StartCoroutine(lifeScript.InstructLife());
 
-            gameObject.transform.position = spawnPlayerCurent;    //спавн в сохраненную точку
+            gameObject.transform.position = lifeScript.spawnPlayerCurent;    //спавн в сохраненную точку
             lifeEvent.Raise();
-            lifeBar.SetLife(life);
+            lifeScript.lifeBar.SetLife(lifeScript.life);
             hp = hpMax;
             healthBar.SetHealth(hp);
             hungerManager.Hunger = hpMax;
@@ -224,26 +53,11 @@ public class HealthScript : MonoBehaviour
             }
             else
             {                
-                LastLife();                                        // все обнуляется
+                lifeScript.LastLife();                                        // все обнуляется
             }
         }
     }
-    public void LifeDamage(int lifeDamage)                        //отнимание жизни
-    {
-        life -= lifeDamage;
-        lifeBar.SetLife(life);
-        if (life < 1)
-        {
-            loseGame.SetActive(true);
-        }
-
-        if (life > lifeMax)
-        {
-            lifeMax = life;
-            lifeBar.SetMaxLife(lifeMax);
-        }
-    }
-    private void PlusDamage(int plus)                       //увеличение шкалы голода пери сьедании полезного
+     public void PlusDamage(int plus)                       //увеличение шкалы голода пери сьедании полезного
     {
         hp += plus;
         healthBar.SetHealth(hp);
@@ -256,7 +70,6 @@ public class HealthScript : MonoBehaviour
             hpMax = hp;
             healthBar.SetMaxHealth(hpMax);
         }
-
     }
     IEnumerator HealthBay()                   // уменьшение шкалы голода
     {
@@ -266,39 +79,5 @@ public class HealthScript : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
         yield return null;                              // выход из корутины
-    }
-    IEnumerator InstrWeater()                        //запуск сообщения об утонувшем герое
-    {
-        if (life >= 1)
-        {
-            loseInstr.SetActive(true);
-            yield return new WaitForSeconds(3);
-            loseInstr.SetActive(false);
-        }
-    }
-
-    IEnumerator InstructMuhomor()                       //запуск сообщения об отравлении
-    {
-        if (life >= 1)
-        {
-            muhomorInstr.SetActive(true);
-            yield return new WaitForSeconds(3);
-            muhomorInstr.SetActive(false);
-        }
-    }
-    IEnumerator InstructLife()                            //запуск сообщения о потери жизни
-    {
-        if (life >= 1)
-        {
-            lifeInstr.SetActive(true);
-            yield return new WaitForSeconds(3);
-            lifeInstr.SetActive(false);
-        }
-    }
-    IEnumerator DotContr()                            //запуск сообщения о потери жизни
-    {
-        dotInstr.SetActive(true);
-        yield return new WaitForSeconds(3);
-        dotInstr.SetActive(false);        
     }
 }

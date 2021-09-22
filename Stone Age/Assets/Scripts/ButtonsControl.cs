@@ -6,17 +6,10 @@ public class ButtonsControl : MonoBehaviour
 {
     [SerializeField] MyPlayerMovement myPlayerMovement;
     [SerializeField] PlayerAttack playerAttack;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         MooveBut();
     }
-
     public void MooveBut()
     {
         if (Input.GetButton("Jump"))

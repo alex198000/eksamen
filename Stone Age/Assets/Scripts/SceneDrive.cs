@@ -61,7 +61,6 @@ public class SceneDrive : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
-
     public void QuitButton()
     {
         Application.Quit();
@@ -104,7 +103,6 @@ public class SceneDrive : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
-
         scoreManager.Score = 0;             
     }
 
@@ -112,11 +110,8 @@ public class SceneDrive : MonoBehaviour
     {
         SceneManager.LoadScene(unlockLevel);
         Time.timeScale = 1;
-
-        scoreManager.Score = 0;
-        
+        scoreManager.Score = 0;        
     }
-
     public void UpdateScore()
     {
         scoreText.text = scoreManager.Score.ToString();
