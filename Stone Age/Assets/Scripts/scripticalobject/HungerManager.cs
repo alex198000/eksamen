@@ -5,7 +5,7 @@ public class HungerManager : ScriptableObject
 {
     [SerializeField] private int hunger;
     [SerializeField] private int hungerGameOver;   
-    [SerializeField] private int damage;
+    //[SerializeField] private int damage;
     [SerializeField] private int life;
     
    
