@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneDrive : MonoBehaviour
 {
+    public static event Action GameWin;
     public int unlockLevel;
     [SerializeField] private GameObject p1effectLost;
     [SerializeField] private GameObject pLost;
@@ -47,6 +48,7 @@ public class SceneDrive : MonoBehaviour
         
         if (scoreManager.Score >= scoreManager.ScoreGameWin)
         {
+            GameWin?.Invoke();
             winGame.SetActive(true);
             Time.timeScale = 0;
             if (PlayerPrefs.GetInt("LevelSave") < unlockLevel)
@@ -112,7 +114,11 @@ public class SceneDrive : MonoBehaviour
         Time.timeScale = 1;
         scoreManager.Score = 0;        
     }
-    public void UpdateScore()
+    //public void UpdateCoins()
+    //{ 
+    //    coins
+    //}
+        public void UpdateScore()
     {
         scoreText.text = scoreManager.Score.ToString();
         hungerText.text = hungerManager.Hunger.ToString();

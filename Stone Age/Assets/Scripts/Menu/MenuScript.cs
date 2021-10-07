@@ -30,14 +30,15 @@ public class MenuScript : MonoBehaviour
 
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private TextMeshProUGUI recordText;
-    
+    [SerializeField] private TextMeshProUGUI coinsText;
+
     [SerializeField] private int lvlcmplt;
     [SerializeField] private List<Button> buttons;
     [SerializeField] private List<ParticleSystem> particles;
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("Sound"))       //активация звуков при 1 включении
+        if (!PlayerPrefs.HasKey("Sound"))       //активация звуков при первом включении
         {
             PlayerPrefs.SetInt("Sound", 1);
         }
@@ -151,6 +152,7 @@ public class MenuScript : MonoBehaviour
     public void UpdateRecord()
     {
         recordText.text = scoreManager.Record.ToString();
+        coinsText.text = scoreManager.Coins.ToString();
     }
     public void StartButton()
     {

@@ -4,17 +4,20 @@ using UnityEngine;
 public class ScoreManager : ScriptableObject
 {
     [SerializeField] private int score;
-    [SerializeField] private int record;   
+    [SerializeField] private int record;
+    [SerializeField] private int coins;
     [SerializeField] private int scoreGameWin;  
     
     public int Score { get { return score; }  set { score = value; } }    
-    public int Record { get { return record; } set { record = value; } }    
+    public int Record { get { return record; } set { record = value; } }
+    public int Coins { get { return coins; } set { coins = value; } }
     public int ScoreGameWin { get { return scoreGameWin; } }
 
     private void OnEnable()
     {
         Score = 0;
-        Record = PlayerPrefs.GetInt("Record");        
+        Record = PlayerPrefs.GetInt("Record");
+        Coins = PlayerPrefs.GetInt("Coins");
     }
 
     public void ScoreVal(int sco)

@@ -20,7 +20,15 @@ public class ContactScript : MonoBehaviour
     [SerializeField] private GameObject winExp;
     [SerializeField] private GameObject eatFruit;
     private FruitAndMushrom fruitAndMushrom = FruitAndMushrom.SuperMushroom;
-    
+
+    private void OnEnable()
+    {
+        sceneDrive.GameWin+= coinsUpdate;
+    }
+    private void OnDisable()
+    {
+        sceneDrive.GameWin -= coinsUpdate;
+    }
     void OnTriggerEnter2D(Collider2D otherCol)
     {
         FruitScript fruitScript = otherCol.gameObject.GetComponent<FruitScript>();
