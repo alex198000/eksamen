@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Alive : MonoBehaviour
+namespace Levels
 {
-    [SerializeField] protected int Health;
-    public abstract void Die();
+    public abstract class Alive : MonoBehaviour
+    {
+        [SerializeField] protected int _health;
+        public abstract void Die();
+    }
 }

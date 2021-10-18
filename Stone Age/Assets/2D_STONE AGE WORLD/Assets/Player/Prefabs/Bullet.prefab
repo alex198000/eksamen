@@ -147,9 +147,10 @@ MonoBehaviour:
   speedBullet: 250
   rb: {fileID: -6874064704924147101}
   explosionShot: {fileID: 8789293347002731060, guid: 47a51187448e50146bfbbdb7e14ab5f2, type: 3}
-  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  scoreManager: {fileID: 11400000, guid: a8d5da10a1ca90043ab56164eaf8474b, type: 2}
   scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
   recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  damageStone: 1
 --- !u!50 &-6874064704924147101
 Rigidbody2D:
   serializedVersion: 4

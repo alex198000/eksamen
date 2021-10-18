@@ -165,12 +165,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpSkelet: 0
   hpMaxSkelet: 2
-  hungerEvent: {fileID: 11400000, guid: 7d3f09e679193644db7191e0d0964d59, type: 2}
-  lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
-  scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
-  recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
-  scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
-  hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
-  skeletonWin: {fileID: 8789293347002731060, guid: b4198144e76372c46902282630ee6877, type: 3}
-  skeletonEffect: {fileID: 8789293347002731060, guid: bab1a46ca9a9e044785261d808219538, type: 3}
-  skeletonDeath: {fileID: 8789293347002731060, guid: 87986ce575389e9488b568c34d7ed9fa, type: 3}
+  _hungerEvent: {fileID: 11400000, guid: 7d3f09e679193644db7191e0d0964d59, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
+  _scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _sceletonManager: {fileID: 11400000, guid: a8d5da10a1ca90043ab56164eaf8474b, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _skeletonWin: {fileID: 8789293347002731060, guid: 87986ce575389e9488b568c34d7ed9fa, type: 3}
+  _skeletonEffect: {fileID: 8789293347002731060, guid: bab1a46ca9a9e044785261d808219538, type: 3}
+  _skeletonDeath: {fileID: 8789293347002731060, guid: a2814ce46a6641441b90101836de581b, type: 3}

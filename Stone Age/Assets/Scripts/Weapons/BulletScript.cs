@@ -1,31 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+namespace Levels
 {
-    [SerializeField] private float speedBullet;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private GameObject explosionShot;
-    [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private GameEvent scoreEvent;
-    [SerializeField] private GameEvent recordEvent;
-
-    public int damageStone = 1;
-    private void OnEnable()
+    public class BulletScript : MonoBehaviour
     {
-        rb.AddForce(transform.right * speedBullet);
-    }
+        [SerializeField] private float speedBullet;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private GameObject explosionShot;
+        [SerializeField] private SceletonManager scoreManager;
+        [SerializeField] private GameEvent scoreEvent;
+        [SerializeField] private GameEvent recordEvent;
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        SkeletonMoove skeletonMoove = col.gameObject.GetComponent<SkeletonMoove>();
-
-        if (skeletonMoove != null)
+        public int damageStone = 1;
+        private void OnEnable()
         {
-            gameObject.SetActive(false);
-            GameObject effectShot = Instantiate(explosionShot, transform.position, transform.rotation);
-            Destroy(effectShot, 2f);
+            rb.AddForce(transform.right * speedBullet);
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            SkeletonMoove skeletonMoove = col.gameObject.GetComponent<SkeletonMoove>();
+
+            if (skeletonMoove != null)
+            {
+                gameObject.SetActive(false);
+                GameObject effectShot = Instantiate(explosionShot, transform.position, transform.rotation);
+                Destroy(effectShot, 2f);
+            }
         }
     }
 }

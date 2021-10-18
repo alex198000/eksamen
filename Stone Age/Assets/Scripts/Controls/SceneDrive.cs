@@ -1,167 +1,185 @@
-using System.Collections;
 using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class SceneDrive : MonoBehaviour
+namespace Levels
 {
-    public static event Action GameWin;
-    public int unlockLevel;
-    [SerializeField] private GameObject p1effectLost;
-    [SerializeField] private GameObject pLost;
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject loseGame;
-    [SerializeField] private GameObject winGame;    
-    [SerializeField] private GameObject exitMenu;
-    [SerializeField] private GameObject canvasMenu;        
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI hungerText;
-    [SerializeField] private TextMeshProUGUI lifeText;
-    [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private HungerManager hungerManager;
-    [SerializeField] private GameEvent lifeEvent;    
-
-    void Start()
+    public class SceneDrive : MonoBehaviour
     {
-        if (PlayerPrefs.GetInt("Music") == 0)
-        {
-            pLost.GetComponent<AudioSource>().mute = true;
-        }
-        else
-        {
-            pLost.GetComponent<AudioSource>().mute = false;
-        }
-        if (PlayerPrefs.GetInt("Music1eff") == 0)
-        {
-            p1effectLost.GetComponent<AudioSource>().mute = true;
-        }
-        else
-        {
-            p1effectLost.GetComponent<AudioSource>().mute = false;
-        }       
-    }
+        public static event Action GameWin;
+        public int unlockLevel;
+        [SerializeField] private GameObject _p1effectLost;
+        [SerializeField] private GameObject _pLost;
+        [SerializeField] private GameObject _pauseMenu;
+        [SerializeField] private GameObject _loseGame;
+        [SerializeField] private GameObject _winGame;
+        [SerializeField] private GameObject _exitMenu;
+        [SerializeField] private GameObject _canvasMenu;
+        [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _hungerText;
+        [SerializeField] private TextMeshProUGUI _lifeText;
+        [SerializeField] private ScoreManager _scoreManager;
+        [SerializeField] private HungerManager _hungerManager;
+        [SerializeField] private GameEvent _lifeEvent;
+        [SerializeField] private SceletonManager _sceletonManager;
+        [SerializeField] private Text _textSceletonPlus;
+        [SerializeField] private Text _textSceletonMinus;
 
-    void Update()
-    {
-        ESCbutton();
-        
-        if (scoreManager.Score >= scoreManager.ScoreGameWin)
+        private void OnEnable()
         {
-            GameWin?.Invoke();
-            winGame.SetActive(true);
-            Time.timeScale = 0;
-            if (PlayerPrefs.GetInt("LevelSave") < unlockLevel)
+            SkeletonHealth.OnSceletonPlus += UpdateSceleton;
+            ObjectDestro.OnSceletonMinus += UpdateSceleton;
+        }
+        private void OnDisable()
+        {
+            SkeletonHealth.OnSceletonPlus -= UpdateSceleton;
+            ObjectDestro.OnSceletonMinus -= UpdateSceleton;
+        }
+
+        void Start()
+        {
+            if (PlayerPrefs.GetInt("Music") == 0)
             {
-                PlayerPrefs.SetInt("LevelSave", unlockLevel);
+                _pLost.GetComponent<AudioSource>().mute = true;
+            }
+            else
+            {
+                _pLost.GetComponent<AudioSource>().mute = false;
+            }
+            if (PlayerPrefs.GetInt("Music1eff") == 0)
+            {
+                _p1effectLost.GetComponent<AudioSource>().mute = true;
+            }
+            else
+            {
+                _p1effectLost.GetComponent<AudioSource>().mute = false;
+            }
+        }
+
+        void Update()
+        {
+            ESCbutton();
+
+            if (_scoreManager.Score >= _scoreManager.ScoreGameWin)
+            {
+                GameWin?.Invoke();
+                _winGame.SetActive(true);
+                Time.timeScale = 0;
+                if (PlayerPrefs.GetInt("LevelSave") < unlockLevel)
+                {
+                    PlayerPrefs.SetInt("LevelSave", unlockLevel);
+                }
+            }
+        }
+
+        public void ResumeButton()
+        {
+            _pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        }
+        public void QuitButton()
+        {
+            Application.Quit();
+        }
+        public void NoButton()
+        {
+            if (_exitMenu.activeSelf == true && _loseGame.activeSelf == true)
+            {
+                _exitMenu.SetActive(false);
+                _loseGame.SetActive(true);
+            }
+            if (_exitMenu.activeSelf == true && _winGame.activeSelf == true)
+            {
+                _exitMenu.SetActive(false);
+                _winGame.SetActive(true);
+            }
+            if (_exitMenu.activeSelf == true && _pauseMenu.activeSelf == true)
+            {
+                _exitMenu.SetActive(false);
+                _pauseMenu.SetActive(true);
+            }
+            if (_exitMenu.activeSelf == true)
+            {
+                _exitMenu.SetActive(false);
+                _pauseMenu.SetActive(true);
+            }
+
+        }
+        public void ExitGameMenu()
+        {
+            _exitMenu.SetActive(true);
+        }
+
+        public void MenuButton()
+        {
+            SceneManager.LoadScene(0);
+            Time.timeScale = 1;
+        }
+        public void RestartButton()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 1;
+            _scoreManager.Score = 0;
+        }
+
+        public void NextLevelButton()
+        {
+            SceneManager.LoadScene(unlockLevel);
+            Time.timeScale = 1;
+            _scoreManager.Score = 0;
+        }
+        public void UpdateScore()
+        {
+            _scoreText.text = _scoreManager.Score.ToString();
+            _hungerText.text = _hungerManager.Hunger.ToString();
+            _lifeText.text = _hungerManager.Life.ToString();
+        }
+
+        public void UpdateSceleton()
+        {
+            _textSceletonPlus.text = _sceletonManager.SceletonPlus.ToString();
+            _textSceletonMinus.text = _sceletonManager.SceletonMinus.ToString();
+        }
+
+        void ESCbutton()                             // кнопка esc или  шаг назад на телефоне
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && _pauseMenu.activeSelf == false && _exitMenu.activeSelf == false && _winGame.activeSelf == false && _loseGame.activeSelf == false)     // Отслеживание нажатия кнопки шаг назад в планшете или esc на клавиатуре
+            {
+                _pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _pauseMenu.activeSelf == true && _exitMenu.activeSelf == false && _winGame.activeSelf == false && _loseGame.activeSelf == false)
+            {
+                _pauseMenu.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _exitMenu.activeSelf == true && _winGame.activeSelf == false && _loseGame.activeSelf == false)
+            {
+                _pauseMenu.SetActive(true);
+                _exitMenu.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _exitMenu.activeSelf == true && _winGame.activeSelf == true)
+            {
+                _winGame.SetActive(true);
+                _exitMenu.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _exitMenu.activeSelf == true && _loseGame.activeSelf == true)
+            {
+                _loseGame.SetActive(true);
+                _exitMenu.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _exitMenu.activeSelf == true && _pauseMenu.activeSelf == true)
+            {
+                _pauseMenu.SetActive(true);
+                _exitMenu.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && (_loseGame.activeSelf == true || _winGame.activeSelf == true || _pauseMenu.activeSelf == true))
+            {
+                //loseGame.SetActive(true);
+                _exitMenu.SetActive(true);
             }
         }
     }
-
-    public void ResumeButton()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-    }
-    public void QuitButton()
-    {
-        Application.Quit();
-    }
-    public void NoButton()
-    {
-        if (exitMenu.activeSelf == true && loseGame.activeSelf == true)
-        {
-            exitMenu.SetActive(false);
-            loseGame.SetActive(true);
-        }
-        if (exitMenu.activeSelf == true && winGame.activeSelf == true)
-        {
-            exitMenu.SetActive(false);
-            winGame.SetActive(true);
-        }
-        if (exitMenu.activeSelf == true && pauseMenu.activeSelf == true)
-        {
-            exitMenu.SetActive(false);
-            pauseMenu.SetActive(true);
-        }
-        if (exitMenu.activeSelf == true)
-        {
-            exitMenu.SetActive(false);
-            pauseMenu.SetActive(true);
-        }
-
-    }
-    public void ExitGameMenu()
-    {
-        exitMenu.SetActive(true);
-    }
-
-    public void MenuButton()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1;
-    }
-    public void RestartButton()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
-        scoreManager.Score = 0;             
-    }
-
-    public void NextLevelButton()
-    {
-        SceneManager.LoadScene(unlockLevel);
-        Time.timeScale = 1;
-        scoreManager.Score = 0;        
-    }
-    //public void UpdateCoins()
-    //{ 
-    //    coins
-    //}
-        public void UpdateScore()
-    {
-        scoreText.text = scoreManager.Score.ToString();
-        hungerText.text = hungerManager.Hunger.ToString();
-        lifeText.text = hungerManager.Life.ToString();
-    }
-
-    void ESCbutton()                             // кнопка esc или  шаг назад на телефоне
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeSelf == false && exitMenu.activeSelf == false && winGame.activeSelf == false && loseGame.activeSelf == false)     // Отслеживание нажатия кнопки шаг назад в планшете или esc на клавиатуре
-        {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeSelf == true && exitMenu.activeSelf == false && winGame.activeSelf == false && loseGame.activeSelf == false)
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && exitMenu.activeSelf == true && winGame.activeSelf == false && loseGame.activeSelf == false)
-        {
-            pauseMenu.SetActive(true);
-            exitMenu.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && exitMenu.activeSelf == true && winGame.activeSelf == true)
-        {
-            winGame.SetActive(true);
-            exitMenu.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && exitMenu.activeSelf == true && loseGame.activeSelf == true)
-        {
-            loseGame.SetActive(true);
-            exitMenu.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && exitMenu.activeSelf == true && pauseMenu.activeSelf == true)
-        {
-            pauseMenu.SetActive(true);
-            exitMenu.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && (loseGame.activeSelf == true || winGame.activeSelf == true || pauseMenu.activeSelf == true))
-        {
-            //loseGame.SetActive(true);
-            exitMenu.SetActive(true);
-        }
-    }
-
 }

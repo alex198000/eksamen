@@ -2,51 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodScript : MonoBehaviour
+namespace Levels
 {
-    [SerializeField] private Animation anim;
-    [SerializeField] private GameObject bonusInstr;
-    [SerializeField] private GameObject explosion;
-    [SerializeField] private GameObject explosionDelete;
-    [SerializeField] private GameObject bonus;
-    private int instrCount= 1;
-    private void Awake()
+    public class WoodScript : MonoBehaviour
     {
-        
-    }
-    void OnTriggerEnter2D(Collider2D otherCol)                                //падают листики, появляется бонус и инструкция как его получить
-    {
-        if (otherCol.gameObject.tag == "Weapon")
+        [SerializeField] private Animation _anim;
+        [SerializeField] private GameObject _bonusInstr;
+        [SerializeField] private GameObject _explosion;
+        [SerializeField] private GameObject _explosionDelete;
+        [SerializeField] private GameObject _bonus;
+        private int _instrCount = 1;
+       
+        void OnTriggerEnter2D(Collider2D otherCol)                                //падают листики, появляется бонус и инструкция как его получить
         {
-            GetComponent<Animation>().Play();
-            anim.Play();
+            if (otherCol.gameObject.tag == "Weapon")
+            {
+                GetComponent<Animation>().Play();
+                _anim.Play();
 
-            explosionDelete = Instantiate(explosion, transform.position, transform.rotation);
-            Instantiate(bonus, transform.position, transform.rotation);
-            
-            Destroy(explosionDelete, 7f);
-           StartCoroutine(InstrBonus());
-            
+                _explosionDelete = Instantiate(_explosion, transform.position, transform.rotation);
+                Instantiate(_bonus, transform.position, transform.rotation);
+
+                Destroy(_explosionDelete, 7f);
+                StartCoroutine(InstrBonus());
+
+            }
         }
-    }
-    void OnTriggerExit2D(Collider2D otherCol)                             //подстраховка для дубины
-    {
-        if (otherCol.gameObject.tag == "Weapon")
+        void OnTriggerExit2D(Collider2D otherCol)                             //подстраховка для дубины
         {
-            otherCol.GetComponent<Collider2D>().enabled = false;
+            if (otherCol.gameObject.tag == "Weapon")
+            {
+                otherCol.GetComponent<Collider2D>().enabled = false;
 
+            }
         }
-    }
-    IEnumerator InstrBonus()
-    {
-        
-    while (instrCount > 0)
-    {
+        IEnumerator InstrBonus()
+        {
 
-            bonusInstr.SetActive(true);
-            yield return new WaitForSeconds(4);
-            bonusInstr.SetActive(false);
-            instrCount--;
+            while (_instrCount > 0)
+            {
+
+                _bonusInstr.SetActive(true);
+                yield return new WaitForSeconds(4);
+                _bonusInstr.SetActive(false);
+                _instrCount--;
+            }
         }
     }
 }

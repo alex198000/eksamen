@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7782302574447357536}
   - component: {fileID: 4722624772760792974}
   m_Layer: 0
-  m_Name: ParticleFruitr 1
+  m_Name: ParticleWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4822,7 +4822,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

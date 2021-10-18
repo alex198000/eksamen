@@ -1,84 +1,85 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-
-public class SkeletonHealth : MonoBehaviour
+namespace Levels
 {
-    public int hpSkelet;
-    public int hpMaxSkelet = 40;
-    [SerializeField] private GameEvent hungerEvent;
-    [SerializeField] private GameEvent lifeEvent;
-    [SerializeField] private GameEvent scoreEvent;
-    [SerializeField] private GameEvent recordEvent;
-    [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private HungerManager hungerManager;
-    [SerializeField] private GameObject skeletonWin;
-    [SerializeField] private GameObject skeletonEffect;
-    [SerializeField] private GameObject skeletonDeath;
-    //void Start()
-    //{
-    //    hpSkelet = hpMaxSkelet;
-    //}
-
-    void OnEnable()
+    public class SkeletonHealth : MonoBehaviour
     {
-        hpSkelet = hpMaxSkelet;
-    }
-
-    // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        BulletScript bulletScript = col.gameObject.GetComponent<BulletScript>();
-        LifeScript lifeScript = col.gameObject.GetComponent<LifeScript>();
-        HealthScript healthScript = col.gameObject.GetComponent<HealthScript>();
-
-
-        if (bulletScript != null)                         // столкновение с камнем
+        public int hpSkelet;
+        public int hpMaxSkelet = 40;
+        [SerializeField] private GameEvent _hungerEvent;
+        [SerializeField] private GameEvent _lifeEvent;
+        [SerializeField] private GameEvent _scoreEvent;
+        [SerializeField] private GameEvent _recordEvent;
+        [SerializeField] private ScoreManager _scoreManager;
+        [SerializeField] private SceletonManager _sceletonManager;
+        [SerializeField] private HungerManager _hungerManager;
+        [SerializeField] private GameObject _skeletonWin;
+        [SerializeField] private GameObject _skeletonEffect;
+        [SerializeField] private GameObject _skeletonDeath;
+        //void Start()
+        //{
+        //    hpSkelet = hpMaxSkelet;
+        //}
+        public static event Action OnSceletonPlus;
+        void OnEnable()
         {
-            hpSkelet -= bulletScript.damageStone;
-            if (hpSkelet > 0)
+            hpSkelet = hpMaxSkelet;
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            BulletScript bulletScript = col.gameObject.GetComponent<BulletScript>();
+            LifeScript lifeScript = col.gameObject.GetComponent<LifeScript>();
+            HealthScript healthScript = col.gameObject.GetComponent<HealthScript>();
+
+            if (bulletScript != null)                         // столкновение с камнем
             {
-               GameObject effectShot = Instantiate(skeletonEffect, transform.position, transform.rotation);
-               Destroy(effectShot, 2f);
+                hpSkelet -= bulletScript.damageStone;
+                if (hpSkelet > 0)
+                {
+                    GameObject effectShot = Instantiate(_skeletonEffect, transform.position, transform.rotation);
+                    Destroy(effectShot, 2f);
+                }
+                if (hpSkelet <= 0)
+                {
+                    GameObject effectDeath = Instantiate(_skeletonDeath, transform.position, transform.rotation);
+                    Destroy(effectDeath, 2f);
+                    gameObject.SetActive(false);
+                    hpSkelet = hpMaxSkelet;   //GetComponent<SkeletonMoove>().skeletonProperty.SkeletonHealth
+                    _scoreManager.ScoreVal(100);
+                    _scoreManager.RecordVal();
+                    _recordEvent.Raise();
+                    _scoreEvent.Raise();
+                    _sceletonManager.SceletonPlus++;
+                    OnSceletonPlus?.Invoke();
+                }
             }
-            if (hpSkelet <= 0)
+
+            if (lifeScript != null)                         // столкновение с player
             {
-                GameObject effectDeath = Instantiate(skeletonDeath, transform.position, transform.rotation);
-                Destroy(effectDeath, 2f);
+                GameObject effectShot = Instantiate(_skeletonWin, transform.position, transform.rotation);
+                Destroy(effectShot, 2f);
                 gameObject.SetActive(false);
-                hpSkelet = hpMaxSkelet;   //GetComponent<SkeletonMoove>().skeletonProperty.SkeletonHealth
-                scoreManager.ScoreVal(100);
-                scoreManager.RecordVal();
-                recordEvent.Raise();
-                scoreEvent.Raise();
-            }
-        }
 
-        if (lifeScript != null)                         // столкновение с player
-        {
-            GameObject effectShot = Instantiate(skeletonWin, transform.position, transform.rotation);
-            Destroy(effectShot, 2f);
-            gameObject.SetActive(false);
+                if (lifeScript.life > 1)                //используем поля healthScript
+                {
+                    col.gameObject.transform.position = lifeScript.spawnPlayerCurent;
 
-            if (lifeScript.life > 1)                //используем поля healthScript
-            {
-                col.gameObject.transform.position = lifeScript.spawnPlayerCurent;
+                    lifeScript.LifeDamage(1);
+                    _hungerManager.LifeVal(1);
+                    _lifeEvent.Raise();
+                    lifeScript.lifeBar.SetLife(lifeScript.life);
+                    healthScript.hp = healthScript.hpMax;
+                    healthScript.healthBar.SetHealth(healthScript.hp);
+                    _hungerManager.Hunger = healthScript.hpMax;
 
-                lifeScript.LifeDamage(1);
-                hungerManager.LifeVal(1);
-                lifeEvent.Raise();
-                lifeScript.lifeBar.SetLife(lifeScript.life);
-                healthScript.hp = healthScript.hpMax;
-                healthScript.healthBar.SetHealth(healthScript.hp);
-                hungerManager.Hunger = healthScript.hpMax;
-               
-            }
-            else
-            {
-                lifeScript.LastLife();
+                }
+                else
+                {
+                    lifeScript.LastLife();
+                }
             }
         }
     }
-  
 }
