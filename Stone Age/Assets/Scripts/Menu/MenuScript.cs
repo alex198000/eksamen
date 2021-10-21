@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Levels;
 
 namespace MainMenu
 {
@@ -73,28 +74,24 @@ namespace MainMenu
             {
                 AudioListener.pause = true;
                 _soundLock.gameObject.SetActive(true);
-
             }
 
             else
             {
                 AudioListener.pause = false;
                 _soundLock.gameObject.SetActive(false);
-
             }
 
             if (PlayerPrefs.GetInt("Music") == _musicOFF)
             {
                 _pLost.GetComponent<AudioSource>().mute = true;
                 _musicLock.gameObject.SetActive(true);
-
             }
 
             else
             {
                 _pLost.GetComponent<AudioSource>().mute = false;
                 _musicLock.gameObject.SetActive(false);
-
             }
 
             if (PlayerPrefs.GetInt("Music1eff") == _effectOFF)             //отключение зыуковых эффектов

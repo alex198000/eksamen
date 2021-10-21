@@ -35,9 +35,9 @@ namespace Levels
             gameObject.SetActive(false);
             _lifeEvent.Raise();
             lifeBar.SetLife(life);
-            _healthScript.hp = 0;
-            _hungerManager.Hunger = _healthScript.hp;
-            _healthScript.healthBar.SetHealth(_healthScript.hp);
+            _healthScript.Hp = 0;
+            _hungerManager.Hunger = _healthScript.Hp;
+            _healthScript.healthBar.SetHealth(_healthScript.Hp);
             GameObject def = Instantiate(_defExp, transform.position, transform.rotation);
             Destroy(def, 5f);
             _sceneDrive.UpdateScore();                             // обновляем юай здоровья

@@ -43,9 +43,9 @@ namespace Levels
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
                     _lifeScript.lifeBar.SetLife(_lifeScript.life);
-                    _healthScript.hp = _healthScript.hpMax;
-                    _healthScript.healthBar.SetHealth(_healthScript.hp);
-                    _hungerManager.Hunger = _healthScript.hpMax;
+                    _healthScript.Hp = _healthScript.HpMax;
+                    _healthScript.healthBar.SetHealth(_healthScript.Hp);
+                    _hungerManager.Hunger = _healthScript.HpMax;
                     _sceneDrive.UpdateScore();
                 }
                 else
@@ -65,9 +65,9 @@ namespace Levels
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
                     _lifeScript.lifeBar.SetLife(_lifeScript.life);
-                    _healthScript.hp = _healthScript.hpMax;
-                    _healthScript.healthBar.SetHealth(_healthScript.hp);
-                    _hungerManager.Hunger = _healthScript.hpMax;
+                    _healthScript.Hp = _healthScript.HpMax;
+                    _healthScript.healthBar.SetHealth(_healthScript.Hp);
+                    _hungerManager.Hunger = _healthScript.HpMax;
                     _sceneDrive.UpdateScore();
                 }
                 else
@@ -80,7 +80,7 @@ namespace Levels
             {
                 fruitAndMushrom = FruitAndMushrom.Poganka;
                 _healthScript.TakeDamage(10);
-                _healthScript.healthBar.SetHealth(_healthScript.hp);
+                _healthScript.healthBar.SetHealth(_healthScript.Hp);
                 Destroy(otherCol.gameObject);
                 GameObject dangerous = Instantiate(_danger, transform.position, transform.rotation);
                 Destroy(dangerous, 5f);
@@ -92,14 +92,14 @@ namespace Levels
                 GameObject fru = Instantiate(_eatFruit, transform.position, transform.rotation);
                 Destroy(fru, 5f);
                 _healthScript.PlusDamage(10);
-                _healthScript.healthBar.SetHealth(_healthScript.hp);
+                _healthScript.healthBar.SetHealth(_healthScript.Hp);
                 _scoreManager.RecordVal();
                 _recordEvent.Raise();
                 Destroy(otherCol.gameObject);
-                if (_healthScript.hp > _healthScript.hpMax)
+                if (_healthScript.Hp > _healthScript.HpMax)
                 {
-                    _healthScript.hpMax = _healthScript.hp;
-                    _healthScript.healthBar.SetMaxHealth(_healthScript.hpMax);
+                    _healthScript.HpMax = _healthScript.Hp;
+                    _healthScript.healthBar.SetMaxHealth(_healthScript.HpMax);
                 }
             }
 
@@ -109,15 +109,15 @@ namespace Levels
                 GameObject fru = Instantiate(_eatFruit, transform.position, transform.rotation);
                 Destroy(fru, 5f);
                 _healthScript.PlusDamage(20);
-                _healthScript.healthBar.SetHealth(_healthScript.hp);
+                _healthScript.healthBar.SetHealth(_healthScript.Hp);
                 Destroy(otherCol.gameObject);
                 _scoreManager.RecordVal();
                 _recordEvent.Raise();
 
-                if (_healthScript.hp > _healthScript.hpMax)
+                if (_healthScript.Hp > _healthScript.HpMax)
                 {
-                    _healthScript.hpMax = _healthScript.hp;
-                    _healthScript.healthBar.SetMaxHealth(_healthScript.hpMax);
+                    _healthScript.HpMax = _healthScript.Hp;
+                    _healthScript.healthBar.SetMaxHealth(_healthScript.HpMax);
                 }
             }
 
@@ -130,21 +130,21 @@ namespace Levels
                 gameObject.SetActive(false);
                 _lifeScript.spawnPlayer = new Vector3(-2, -2, 0);
 
-                if (PlayerPrefs.GetInt("LevelSave") < _sceneDrive.unlockLevel)
+                if (PlayerPrefs.GetInt("LevelSave") < _sceneDrive.UnlockLevel)
                 {
-                    PlayerPrefs.SetInt("LevelSave", _sceneDrive.unlockLevel);
+                    PlayerPrefs.SetInt("LevelSave", _sceneDrive.UnlockLevel);
                 }
 
                 _healthScript.PlusDamage(100);
                 _scoreManager.RecordVal();
                 _recordEvent.Raise();
-                _healthScript.healthBar.SetHealth(_healthScript.hp);
+                _healthScript.healthBar.SetHealth(_healthScript.Hp);
                 Destroy(otherCol.gameObject);
 
-                if (_healthScript.hp > _healthScript.hpMax)
+                if (_healthScript.Hp > _healthScript.HpMax)
                 {
-                    _healthScript.hpMax = _healthScript.hp;
-                    _healthScript.healthBar.SetMaxHealth(_healthScript.hpMax);
+                    _healthScript.HpMax = _healthScript.Hp;
+                    _healthScript.healthBar.SetMaxHealth(_healthScript.HpMax);
                 }
             }
 

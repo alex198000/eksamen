@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6d82f2bb41e0840b3655325d0d50ea, type: 3}
   m_Name: SkeletonProperty 1
   m_EditorClassIdentifier: 
-  skeletonSpeed: 1
-  skeletonScale: {x: 1, y: 1, z: 1}
-  skeletonColor: {fileID: 2100000, guid: 764fcb585f1f34a6da8ae3fca76c1261, type: 2}
-  skeletonSprite: {fileID: 21300032, guid: 2c06fc137f4d6824aa6eaaf5fc8ec5ad, type: 3}
-  skeletonHealth: 2
-  skeletonColl: {x: 2, y: 2}
+  _skeletonSpeed: 1
+  _skeletonScale: {x: 1, y: 1, z: 1}
+  _skeletonColor: {fileID: 0}
+  _skeletonSprite: {fileID: 21300032, guid: 2c06fc137f4d6824aa6eaaf5fc8ec5ad, type: 3}
+  _skeletonHealth: 2
+  _skeletonColl: {x: 2, y: 2}

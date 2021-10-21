@@ -1,75 +1,65 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable] 
-public class ObjectPoolItem
+namespace Levels
 {
-
-    public GameObject pooledObject;
-    public int pooledAmount;
-    public bool willGrow;
-
-
-
-
-
-}
-public class ObjectPooler : MonoBehaviour
-{
-    public static ObjectPooler objectPooler;
-    [SerializeField] private List<ObjectPoolItem> itemsToPool;
-
-    [SerializeField] private List<GameObject> pooledObjects;
-
-    private void Awake()
+    [System.Serializable]
+    public class ObjectPoolItem
     {
-        objectPooler = this;
+        public GameObject pooledObject;
+        public int pooledAmount;
+        public bool willGrow;
     }
-    void Start()
+    public class ObjectPooler : MonoBehaviour
     {
-        pooledObjects = new List<GameObject>();
-        foreach (ObjectPoolItem item in itemsToPool)
+        public static ObjectPooler objectPooler;
+        [SerializeField] private List<ObjectPoolItem> itemsToPool;
+
+        [SerializeField] private List<GameObject> pooledObjects;
+
+        private void Awake()
         {
-            for (int i = 0; i < item.pooledAmount; i++)
-            {
-                GameObject obj = (GameObject)Instantiate(item.pooledObject);
-                obj.SetActive(false);
-                pooledObjects.Add(obj);
-            }
+            objectPooler = this;
         }
-    }
-
-    public GameObject GetPooledObject(string tag)   // метод активации обьектов
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
+        void Start()
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag) //pooledObjects[i].activeInHierarchy == false
+            pooledObjects = new List<GameObject>();
+            foreach (ObjectPoolItem item in itemsToPool)
             {
-                return pooledObjects[i];
-            }
-
-
-        }
-        foreach (ObjectPoolItem item in itemsToPool)
-        {
-            if (item.pooledObject.tag == tag)
-            {
-
-                if (item.willGrow) // willGrow == true   будет ли увеличиваться пул
+                for (int i = 0; i < item.pooledAmount; i++)
                 {
-                    GameObject obj = Instantiate(item.pooledObject);
+                    GameObject obj = (GameObject)Instantiate(item.pooledObject);
                     obj.SetActive(false);
                     pooledObjects.Add(obj);
-                    obj.transform.SetParent(transform);
-                    return obj;
-
                 }
-              
             }
-
-
         }
-        return null;
+
+        public GameObject GetPooledObject(string tag)   // метод активации обьектов
+        {
+            for (int i = 0; i < pooledObjects.Count; i++)
+            {
+                if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag) //pooledObjects[i].activeInHierarchy == false
+                {
+                    return pooledObjects[i];
+                }
+            }
+            foreach (ObjectPoolItem item in itemsToPool)
+            {
+                if (item.pooledObject.tag == tag)
+                {
+                    if (item.willGrow) // willGrow == true   будет ли увеличиваться пул
+                    {
+                        GameObject obj = Instantiate(item.pooledObject);
+                        obj.SetActive(false);
+                        pooledObjects.Add(obj);
+                        obj.transform.SetParent(transform);
+                        return obj;
+
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

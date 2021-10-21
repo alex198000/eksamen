@@ -1,78 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkeletonProperty", menuName = "ScriptableObjects/NewSkeletonProperty")]
-public class SkeletonProperty : ScriptableObject
+namespace Levels
 {
-
-    [SerializeField] private float skeletonSpeed;
-    [SerializeField] private Vector3 skeletonScale;
-    [SerializeField] private Material skeletonColor;
-    //[SerializeField] private Quaternion skeletonRotate;      //поворот спрайта
-    [SerializeField] private Sprite skeletonSprite;
-    [SerializeField] private int skeletonHealth;
-    [SerializeField] private Vector2 skeletonColl;
-
-    public float SpeedSkeleton
-    {
-        get
-        {
-           return skeletonSpeed;
-        }
-        
-    }
-    public Vector3 ScaleSkeleton
-    {
-        get
-        {
-            return  skeletonScale;
-        }
-       
-    }
-    public Material SkeletonColor
-    {
-        get
-        {
-            return skeletonColor;
-        }
-
-    }
-
-    public Sprite SkeletonSprite
-    {
-        get
-        {
-            return skeletonSprite;
-        }
-
-    }
-
-    public int SkeletonHealth
-    {
-        get
-        {
-            return skeletonHealth;
-        }
-
-    }
-
-    public Vector2 SkeletonColl
+    [CreateAssetMenu(fileName = "SkeletonProperty", menuName = "ScriptableObjects/NewSkeletonProperty")]
+    public class SkeletonProperty : ScriptableObject
     {
 
-        get
-        {
-            return skeletonColl;
-        }
-    }
-    //public Quaternion SkeletonRotate
-    //{
-    //    get
-    //    {
-    //        return skeletonRotate;
-    //    }
-    //}
+        [SerializeField] private float _skeletonSpeed;
+        [SerializeField] private Vector3 _skeletonScale;
+        [SerializeField] private Material _skeletonColor;
+        //[SerializeField] private Quaternion _skeletonRotate;      //поворот спрайта
+        [SerializeField] private Sprite _skeletonSprite;
+        [SerializeField] private int _skeletonHealth;
+        [SerializeField] private Vector2 _skeletonColl;
 
+        public float SpeedSkeleton
+        {
+            get
+            {
+                return _skeletonSpeed;
+            }
+
+        }
+        public Vector3 ScaleSkeleton
+        {
+            get
+            {
+                return _skeletonScale;
+            }
+
+        }
+        public Material SkeletonColor
+        {
+            get
+            {
+                return _skeletonColor;
+            }
+
+        }
+
+        public Sprite SkeletonSprite
+        {
+            get
+            {
+                return _skeletonSprite;
+            }
+
+        }
+
+        public int SkeletonHealth
+        {
+            get
+            {
+                return _skeletonHealth;
+            }
+
+        }
+
+        public Vector2 SkeletonColl
+        {
+            get
+            {
+                return _skeletonColl;
+            }
+        }
+        //public Quaternion SkeletonRotate
+        //{
+        //    get
+        //    {
+        //        return _skeletonRotate;
+        //    }
+        //}
+
+    }
 }
-
 

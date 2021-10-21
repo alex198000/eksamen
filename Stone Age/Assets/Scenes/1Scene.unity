@@ -7018,19 +7018,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3021dfe3d18b0e54496b4a305f03c926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonTag: Skeleton
-  player: {fileID: 967619291639319320}
-  SkeletonManager: {fileID: 160307441}
-  skeletonProperties:
-  - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
+  _skeletonTag: Sceleton
+  _player: {fileID: 967619291639319320}
+  _SkeletonManager: {fileID: 160307441}
+  _skeletonProperties:
   - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
-  healthScript: {fileID: 967619291639319324}
-  waveCount: 11
-  skeletonCount: 2
-  spawnRate: 4
-  waveRate: 2
-  spawnPointPosition: {x: 0, y: 0, z: 0}
-  dist: {x: 5, y: 5, z: 0}
+  - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
+  _healthScript: {fileID: 967619291639319324}
+  _waveCount: 25
+  _skeletonCount: 2
+  _spawnRate: 2
+  _waveRate: 2
+  _spawnPointPosition: {x: 0, y: 0, z: 0}
+  _dist: {x: 0, y: 0, z: 0}
 --- !u!1 &404010242
 GameObject:
   m_ObjectHideFlags: 0
@@ -47801,11 +47801,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86375b11faeffae4b9dfe8f27b9b4b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 200
-  playerJumpForce: 7
-  animObject: {fileID: 967495636190904918}
-  player: {fileID: 967619291639319320}
-  animator: {fileID: 882678543631579690}
+  _playerSpeed: 200
+  _playerJumpForce: 8
+  _animObject: {fileID: 967495636190904918}
+  _player: {fileID: 967619291639319320}
+  _animator: {fileID: 882678543631579690}
 --- !u!58 &967619291639319322
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -47853,9 +47853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d40151de3ce7ec42bfba870030e40b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  hpMax: 250
   healthBar: {fileID: 2024899018}
+  _hp: 0
+  _hpMax: 40
   _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
   _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   _sceneDrive: {fileID: 133317063}

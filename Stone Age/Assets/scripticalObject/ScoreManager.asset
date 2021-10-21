@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473edc527edce1840bd6abbe95f8a2db, type: 3}
   m_Name: ScoreManager
   m_EditorClassIdentifier: 
-  score: 0
-  hunger: 200
-  hungerGameOver: 0
-  scoreGameWin: 5700
-  damage: 2
+  _score: 0
+  _record: 1290
+  _coins: 0
+  _scoreGameWin: 200

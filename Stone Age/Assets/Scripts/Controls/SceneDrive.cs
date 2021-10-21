@@ -9,7 +9,8 @@ namespace Levels
     public class SceneDrive : MonoBehaviour
     {
         public static event Action GameWin;
-        public int unlockLevel;
+
+        [SerializeField] private int unlockLevel;
         [SerializeField] private GameObject _p1effectLost;
         [SerializeField] private GameObject _pLost;
         [SerializeField] private GameObject _pauseMenu;
@@ -26,6 +27,8 @@ namespace Levels
         [SerializeField] private SceletonManager _sceletonManager;
         [SerializeField] private Text _textSceletonPlus;
         [SerializeField] private Text _textSceletonMinus;
+
+        public int UnlockLevel { get => unlockLevel; set => unlockLevel = value; }
 
         private void OnEnable()
         {
@@ -66,7 +69,7 @@ namespace Levels
             {
                 GameWin?.Invoke();
                 _winGame.SetActive(true);
-                Time.timeScale = 0;
+               // Time.timeScale = 0;
                 if (PlayerPrefs.GetInt("LevelSave") < unlockLevel)
                 {
                     PlayerPrefs.SetInt("LevelSave", unlockLevel);

@@ -31,8 +31,8 @@ namespace Levels
         {
             this.skeletonProperty = skeletonProperty;
             transform.localScale = new Vector3(skeletonProperty.ScaleSkeleton.x, skeletonProperty.ScaleSkeleton.y, skeletonProperty.ScaleSkeleton.z);
-            skeletonHealth.hpMaxSkelet = skeletonProperty.SkeletonHealth;
-            skeletonHealth.hpSkelet = skeletonHealth.hpMaxSkelet;
+            skeletonHealth.HpMaxSkelet = skeletonProperty.SkeletonHealth;
+            skeletonHealth.HpSkelet = skeletonHealth.HpMaxSkelet;
             spriteSkeleton.sprite = skeletonProperty.SkeletonSprite;
             colider.size = skeletonProperty.SkeletonColl;
             //mr.material = skeletonProperty.SkeletonColor;

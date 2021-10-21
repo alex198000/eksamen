@@ -39,9 +39,9 @@ namespace Levels
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
                     lifeScript.lifeBar.SetLife(lifeScript.life);
-                    healthScript.hp = healthScript.hpMax;
-                    healthScript.healthBar.SetHealth(healthScript.hp);
-                    _hungerManager.Hunger = healthScript.hpMax;
+                    healthScript.Hp = healthScript.HpMax;
+                    healthScript.healthBar.SetHealth(healthScript.Hp);
+                    _hungerManager.Hunger = healthScript.HpMax;
 
                 }
                 else

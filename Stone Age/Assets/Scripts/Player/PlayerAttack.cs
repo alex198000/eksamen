@@ -1,46 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+namespace Levels
 {
-    [SerializeField] private float fireRate;
-    [SerializeField] private float nextFire;
-    [SerializeField] private Transform bulletManager;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Animator animator;
-    [SerializeField] private Collider2D col;
-    [SerializeField] private string bulletTag;
-    private void FixedUpdate()
+    public class PlayerAttack : MonoBehaviour
     {
-        nextFire -= Time.deltaTime;
-    }
-    public void Dubin()
-    {
-        StartCoroutine(DobinCollider());
-    }
-    public void Fire()
-    {
-        if (nextFire < 0)
+        [SerializeField] private float fireRate;
+        [SerializeField] private float nextFire;
+        [SerializeField] private Transform bulletManager;
+        [SerializeField] private Transform spawnPoint;
+        [SerializeField] private Animator animator;
+        [SerializeField] private Collider2D col;
+        [SerializeField] private string bulletTag;
+        private void FixedUpdate()
         {
-            animator.SetTrigger("Fire");
-            GameObject bullet = ObjectPooler.objectPooler.GetPooledObject(bulletTag);
-            if (bullet != null)
+            nextFire -= Time.deltaTime;
+        }
+        public void Dubin()
+        {
+            StartCoroutine(DobinCollider());
+        }
+        public void Fire()
+        {
+            if (nextFire < 0)
             {
-                bullet.transform.position = spawnPoint.position;
-                bullet.transform.rotation = spawnPoint.rotation;
-                bullet.SetActive(true);
-                bullet.transform.SetParent(bulletManager);
+                animator.SetTrigger("Fire");
+                GameObject bullet = ObjectPooler.objectPooler.GetPooledObject(bulletTag);
+                if (bullet != null)
+                {
+                    bullet.transform.position = spawnPoint.position;
+                    bullet.transform.rotation = spawnPoint.rotation;
+                    bullet.SetActive(true);
+                    bullet.transform.SetParent(bulletManager);
 
-                nextFire = fireRate;
+                    nextFire = fireRate;
+                }
             }
         }
-    }
-    IEnumerator DobinCollider()            
-    {
-        animator.SetTrigger("Atak");
-        col.enabled = true;
-        yield return new WaitForSeconds(1);
-        col.enabled = false;
+        IEnumerator DobinCollider()
+        {
+            animator.SetTrigger("Atak");
+            col.enabled = true;
+            yield return new WaitForSeconds(1);
+            col.enabled = false;
+        }
     }
 }

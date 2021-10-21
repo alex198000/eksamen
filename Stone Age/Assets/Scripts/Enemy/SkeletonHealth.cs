@@ -5,8 +5,8 @@ namespace Levels
 {
     public class SkeletonHealth : MonoBehaviour
     {
-        public int hpSkelet;
-        public int hpMaxSkelet = 40;
+        [SerializeField] private int _hpSkelet;
+        [SerializeField] private int _hpMaxSkelet = 40;
         [SerializeField] private GameEvent _hungerEvent;
         [SerializeField] private GameEvent _lifeEvent;
         [SerializeField] private GameEvent _scoreEvent;
@@ -17,14 +17,16 @@ namespace Levels
         [SerializeField] private GameObject _skeletonWin;
         [SerializeField] private GameObject _skeletonEffect;
         [SerializeField] private GameObject _skeletonDeath;
-        //void Start()
-        //{
-        //    hpSkelet = hpMaxSkelet;
-        //}
+
+        
+
+        public int HpSkelet { get => _hpSkelet; set => _hpSkelet = value; }
+        public int HpMaxSkelet { get => _hpMaxSkelet; set => _hpMaxSkelet = value; }
+
         public static event Action OnSceletonPlus;
         void OnEnable()
         {
-            hpSkelet = hpMaxSkelet;
+            _hpSkelet = _hpMaxSkelet;
         }
 
         private void OnCollisionEnter2D(Collision2D col)
@@ -35,18 +37,18 @@ namespace Levels
 
             if (bulletScript != null)                         // столкновение с камнем
             {
-                hpSkelet -= bulletScript.damageStone;
-                if (hpSkelet > 0)
+                _hpSkelet -= bulletScript.damageStone;
+                if (_hpSkelet > 0)
                 {
                     GameObject effectShot = Instantiate(_skeletonEffect, transform.position, transform.rotation);
                     Destroy(effectShot, 2f);
                 }
-                if (hpSkelet <= 0)
+                if (_hpSkelet <= 0)
                 {
                     GameObject effectDeath = Instantiate(_skeletonDeath, transform.position, transform.rotation);
                     Destroy(effectDeath, 2f);
                     gameObject.SetActive(false);
-                    hpSkelet = hpMaxSkelet;   //GetComponent<SkeletonMoove>().skeletonProperty.SkeletonHealth
+                    _hpSkelet = _hpMaxSkelet;   //GetComponent<SkeletonMoove>().skeletonProperty.SkeletonHealth
                     _scoreManager.ScoreVal(100);
                     _scoreManager.RecordVal();
                     _recordEvent.Raise();
@@ -70,10 +72,9 @@ namespace Levels
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
                     lifeScript.lifeBar.SetLife(lifeScript.life);
-                    healthScript.hp = healthScript.hpMax;
-                    healthScript.healthBar.SetHealth(healthScript.hp);
-                    _hungerManager.Hunger = healthScript.hpMax;
-
+                    healthScript.Hp = healthScript.HpMax;
+                    healthScript.healthBar.SetHealth(healthScript.Hp);
+                    _hungerManager.Hunger = healthScript.HpMax;
                 }
                 else
                 {

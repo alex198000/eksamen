@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Translator : MonoBehaviour
+namespace MainMenu
 {
-    private static int LanguageId;
-
-    private static List<Translatable_text> listId = new List<Translatable_text>();
-
-    #region ВЕСЬ ТЕКСТ [двухмерный массив]
-
-    private static string[,] LineText =
+    public class Translator : MonoBehaviour
     {
+        private static int LanguageId;
+
+        private static List<Translatable_text> listId = new List<Translatable_text>();
+
+        #region ВЕСЬ ТЕКСТ [двухмерный массив]
+
+        private static string[,] LineText =
+        {
         #region АНГЛИЙСКИЙ
         {
             "Play",         // 0
@@ -118,40 +119,39 @@ public class Translator : MonoBehaviour
         },
 #endregion
     };
-    #endregion
+        #endregion
 
-    static public void Select_language(int id)
-    {
-        LanguageId = id;
-        Update_texts();
-
-    }
-
-    static public string Get_text(int textKey)
-    {
-        return LineText[LanguageId, textKey];
-    }
-
-    static public void Add(Translatable_text idtext)
-    {
-        listId.Add(idtext);
-    }
-
-    static public void Delete(Translatable_text idtext)
-    {
-        listId.Remove(idtext);
-    }
-
-    static public void Update_texts()
-    {
-        for(int i = 0; i < listId.Count; i++)
+        static public void Select_language(int id)
         {
-            listId[i].UIText.text = LineText[LanguageId, listId[i].textID];
-            if (PlayerPrefs.GetInt("Language") == 1) listId[i].UIText.font = Resources.Load<TMP_FontAsset>("RU_font_asset");
-            else if (PlayerPrefs.GetInt("Language") == 2) listId[i].UIText.font = Resources.Load<TMP_FontAsset>("CH_font_asset");
-            else listId[i].UIText.font = Resources.Load<TMP_FontAsset>("EN_font_asset");
+            LanguageId = id;
+            Update_texts();
 
         }
+
+        static public string Get_text(int textKey)
+        {
+            return LineText[LanguageId, textKey];
+        }
+
+        static public void Add(Translatable_text idtext)
+        {
+            listId.Add(idtext);
+        }
+
+        static public void Delete(Translatable_text idtext)
+        {
+            listId.Remove(idtext);
+        }
+
+        static public void Update_texts()
+        {
+            for (int i = 0; i < listId.Count; i++)
+            {
+                listId[i].UIText.text = LineText[LanguageId, listId[i].textID];
+                if (PlayerPrefs.GetInt("Language") == 1) listId[i].UIText.font = Resources.Load<TMP_FontAsset>("RU_font_asset");
+                else if (PlayerPrefs.GetInt("Language") == 2) listId[i].UIText.font = Resources.Load<TMP_FontAsset>("CH_font_asset");
+                else listId[i].UIText.font = Resources.Load<TMP_FontAsset>("EN_font_asset");
+            }
+        }
     }
-   
 }

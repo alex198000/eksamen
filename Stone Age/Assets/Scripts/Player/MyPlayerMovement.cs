@@ -1,62 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
-public class MyPlayerMovement : MonoBehaviour
+namespace Levels
 {
-    [Header("Player Property")]
-    [SerializeField] private float playerSpeed;
-    [SerializeField] private float playerJumpForce;
-    [SerializeField] private GameObject animObject;
-    [SerializeField] private GameObject player;
-    [SerializeField] private Animator animator;
-    private Rigidbody2D rb;
-    private float currentPlayerSpeed;
-    private bool groundCheck;    
-    
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+    public class MyPlayerMovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();    
-    }
-   
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(currentPlayerSpeed * Time.deltaTime, rb.velocity.y);
-        animator.SetFloat("Speed", Mathf.Abs(currentPlayerSpeed));
-    }
-    public void RightMove()
-    {
-        currentPlayerSpeed = playerSpeed;
-        //transform.Rotate(0f, 0f, 0f);
-        player.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-    }
-    public void LeftMove()
-    {
-        currentPlayerSpeed = -playerSpeed;
-        // transform.Rotate(0f, 180f, 0f);
-        player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-    }
-   public void StopMove()
-    {
-        currentPlayerSpeed = 0f;
-    }
-    public void Jump()
-    {
-        if (groundCheck)
+        [Header("Player Property")]
+        [SerializeField] private float _playerSpeed;
+        [SerializeField] private float _playerJumpForce;
+        [SerializeField] private GameObject _animObject;
+        [SerializeField] private GameObject _player;
+        [SerializeField] private Animator _animator;
+        private Rigidbody2D _rb;
+        private float _currentPlayerSpeed;
+        private bool _groundCheck;
+
+        private void Awake()
         {
-            animator.SetTrigger("Jump");
-            rb.velocity = new Vector2(rb.velocity.x, playerJumpForce);
-            groundCheck = false;
+            _rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            _rb.velocity = new Vector2(_currentPlayerSpeed * Time.deltaTime, _rb.velocity.y);
+            _animator.SetFloat("Speed", Mathf.Abs(_currentPlayerSpeed));
+        }
+        public void RightMove()
+        {
+            _currentPlayerSpeed = _playerSpeed;
+            //transform.Rotate(0f, 0f, 0f);
+            _player.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        public void LeftMove()
+        {
+            _currentPlayerSpeed = -_playerSpeed;
+            // transform.Rotate(0f, 180f, 0f);
+            _player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        public void StopMove()
+        {
+            _currentPlayerSpeed = 0f;
+        }
+        public void Jump()
+        {
+            if (_groundCheck)
+            {
+                _animator.SetTrigger("Jump");
+                _rb.velocity = new Vector2(_rb.velocity.x, _playerJumpForce);
+                _groundCheck = false;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            _groundCheck = true;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        groundCheck = true;
-    }
 }
-
 
 
 

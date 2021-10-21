@@ -5,9 +5,10 @@ namespace Levels
 {
     public class HealthScript : MonoBehaviour
     {
-        public int hp;
-        public int hpMax = 40;
         public HealthBar healthBar;
+        [SerializeField] private int _hp;
+        [SerializeField] private int _hpMax = 40;
+        
         [SerializeField] private ScoreManager _scoreManager;
         [SerializeField] private HungerManager _hungerManager;
         [SerializeField] private SceneDrive _sceneDrive;
@@ -17,26 +18,30 @@ namespace Levels
         [SerializeField] private GameEvent _hungerEvent;
         [SerializeField] private GameEvent _lifeEvent;
         [SerializeField] private GameObject _overGame;
+
+        public int HpMax { get => _hpMax; set => _hpMax = value; }
+        public int Hp { get => _hp; set => _hp = value; }
+
         private void Start()
         {
-            hp = hpMax;
-            healthBar.SetMaxHealth(hpMax);
-            _hungerManager.Hunger = hpMax;
+            _hp = _hpMax;
+            healthBar.SetMaxHealth(_hpMax);
+            _hungerManager.Hunger = _hpMax;
             StartCoroutine(HealthBay());
         }
         public void TakeDamage(int damage)                       //отнимаем здоровье от ядов
         {
-            hp -= damage;
-            healthBar.SetHealth(hp);
-            if (hp > hpMax)
+            _hp -= damage;
+            healthBar.SetHealth(_hp);
+            if (_hp > _hpMax)
             {
-                hpMax = hp;
-                healthBar.SetMaxHealth(hpMax);
+                _hpMax = _hp;
+                healthBar.SetMaxHealth(_hpMax);
             }
 
             _hungerManager.HungerVal(damage);
             _hungerEvent.Raise();
-            if (hp <= 0)
+            if (_hp <= 0)
             {
                 if (_lifeScript.life > 1)
                 {
@@ -47,9 +52,9 @@ namespace Levels
                     gameObject.transform.position = _lifeScript.spawnPlayerCurent;    //спавн в сохраненную точку
                     _lifeEvent.Raise();
                     _lifeScript.lifeBar.SetLife(_lifeScript.life);
-                    hp = hpMax;
-                    healthBar.SetHealth(hp);
-                    _hungerManager.Hunger = hpMax;
+                    _hp = _hpMax;
+                    healthBar.SetHealth(_hp);
+                    _hungerManager.Hunger = _hpMax;
                     _sceneDrive.UpdateScore();
                 }
                 else
@@ -60,21 +65,21 @@ namespace Levels
         }
         public void PlusDamage(int plus)                       //увеличение шкалы голода пери сьедании полезного
         {
-            hp += plus;
-            healthBar.SetHealth(hp);
+            _hp += plus;
+            healthBar.SetHealth(_hp);
             _scoreManager.ScoreVal(plus);
             _scoreEvent.Raise();
             _hungerManager.HungerPlus(plus);
             _hungerEvent.Raise();
-            if (hp > hpMax)
+            if (_hp > _hpMax)
             {
-                hpMax = hp;
-                healthBar.SetMaxHealth(hpMax);
+                _hpMax = _hp;
+                healthBar.SetMaxHealth(_hpMax);
             }
         }
         IEnumerator HealthBay()                   // уменьшение шкалы голода
         {
-            while (hp > 0)
+            while (_hp > 0)
             {
                 TakeDamage(5);
                 yield return new WaitForSeconds(2);

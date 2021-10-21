@@ -1,39 +1,48 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScoreManager", menuName = "ScriptableObjects/NewScoreManager")]
-public class ScoreManager : ScriptableObject
+namespace Levels
 {
-    [SerializeField] private int score;
-    [SerializeField] private int record;
-    [SerializeField] private int coins;
-    [SerializeField] private int scoreGameWin;  
-    
-    public int Score { get { return score; }  set { score = value; } }    
-    public int Record { get { return record; } set { record = value; } }
-    public int Coins { get { return coins; } set { coins = value; } }
-    public int ScoreGameWin { get { return scoreGameWin; } }
 
-    private void OnEnable()
+    [CreateAssetMenu(fileName = "ScoreManager", menuName = "ScriptableObjects/NewScoreManager")]
+    public class ScoreManager : ScriptableObject
     {
-        Score = 0;
-        Record = PlayerPrefs.GetInt("Record");
-        Coins = PlayerPrefs.GetInt("Coins");
-    }
+        [SerializeField] private int _score;
+        [SerializeField] private int _record;
+        [SerializeField] private int _coins;
+        [SerializeField] private int _scoreGameWin;
 
-    public void ScoreVal(int sco)
-    {
-        Score+= sco;
-    }
+        public int Score { get { return _score; } set { _score = value; } }
+        public int Record { get { return _record; } set { _record = value; } }
+        public int Coins { get { return _coins; } set { _coins = value; } }
+        public int ScoreGameWin { get { return _scoreGameWin; } }
 
-    public void RecordVal()
-    {
-        if(Record < Score)
-        {        
-        Record = score;
-        PlayerPrefs.SetInt("Record", record);
+        private void OnEnable()
+        {
+            Score = 0;
+            Record = PlayerPrefs.GetInt("Record");
+            Coins = PlayerPrefs.GetInt("Coins");
+        }
+
+        public void ScoreVal(int sco)
+        {
+            Score += sco;
+        }
+
+        public void CoinseVal(int coin)
+        {
+            Coins += coin;
+            PlayerPrefs.SetInt("Coins", _coins);
+        }
+
+        public void RecordVal()
+        {
+            if (Record < Score)
+            {
+                Record = _score;
+                PlayerPrefs.SetInt("Record", _record);
+            }
         }
     }
 }
-
 
 
