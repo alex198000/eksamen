@@ -5,7 +5,7 @@ namespace MainMenu
 {
     public class Start_menu : MonoBehaviour
     {
-        public TextMeshProUGUI test_text;
+        //public TextMeshProUGUI test_text;
         void Start()
         {
             if (PlayerPrefs.HasKey("Language") == false)
@@ -21,10 +21,10 @@ namespace MainMenu
             PlayerPrefs.SetInt("Language", languageID);
             Translator.Select_language(PlayerPrefs.GetInt("Language"));
         }
-        public void Show_text()
-        {
-            test_text.enabled = true;
-            test_text.text = Translator.Get_text(4);
-        }
+        //public void Show_text()
+        //{
+        //    test_text.enabled = true;
+        //    test_text.text = Translator.Get_text(4);
+        //}
     }
 }

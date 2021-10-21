@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Levels
 {
-    public enum FruitAndMushrom { Muhomor, Water, Poganka, Mushroom, Fruit, SuperMushroom, DotSave1, DotSave2 };
+    //public enum FruitAndMushrom { Muhomor, Water, Poganka, Mushroom, Fruit, SuperMushroom, DotSave1, DotSave2 };
     public class ContactScript : MonoBehaviour
     {
         [SerializeField] private HealthScript _healthScript;
@@ -20,7 +20,7 @@ namespace Levels
         [SerializeField] private GameObject _winGame;
         [SerializeField] private GameObject _winExp;
         [SerializeField] private GameObject _eatFruit;
-        private FruitAndMushrom fruitAndMushrom = FruitAndMushrom.SuperMushroom;
+        //private FruitAndMushrom fruitAndMushrom = FruitAndMushrom.SuperMushroom;
         void OnTriggerEnter2D(Collider2D otherCol)
         {
             FruitScript fruitScript = otherCol.gameObject.GetComponent<FruitScript>();
@@ -32,7 +32,7 @@ namespace Levels
 
             if (muhomorScript != null)                                     //контакт с мухомором, минус жизнь
             {
-                fruitAndMushrom = FruitAndMushrom.Muhomor;
+                //fruitAndMushrom = FruitAndMushrom.Muhomor;
                 if (_lifeScript.life > 1)
                 {
                     GameObject dangerous = Instantiate(_danger, transform.position, transform.rotation);
@@ -56,7 +56,7 @@ namespace Levels
 
             if (waterScript != null)                                //контакт с водой
             {
-                fruitAndMushrom = FruitAndMushrom.Water;
+                //fruitAndMushrom = FruitAndMushrom.Water;
                 if (_lifeScript.life > 1)
                 {
                     gameObject.transform.position = _lifeScript.spawnPlayerCurent;
@@ -78,7 +78,7 @@ namespace Levels
 
             if (pogankaScript != null)                     //контакт с поганкой, ущерб
             {
-                fruitAndMushrom = FruitAndMushrom.Poganka;
+                //fruitAndMushrom = FruitAndMushrom.Poganka;
                 _healthScript.TakeDamage(10);
                 _healthScript.healthBar.SetHealth(_healthScript.Hp);
                 Destroy(otherCol.gameObject);
@@ -88,7 +88,7 @@ namespace Levels
 
             if (mushroomScript != null)                 //контакт с полезным грибом
             {
-                fruitAndMushrom = FruitAndMushrom.Mushroom;
+                //fruitAndMushrom = FruitAndMushrom.Mushroom;
                 GameObject fru = Instantiate(_eatFruit, transform.position, transform.rotation);
                 Destroy(fru, 5f);
                 _healthScript.PlusDamage(10);
@@ -105,7 +105,7 @@ namespace Levels
 
             if (fruitScript != null)                  //контакт с фруктами
             {
-                fruitAndMushrom = FruitAndMushrom.Fruit;
+                //fruitAndMushrom = FruitAndMushrom.Fruit;
                 GameObject fru = Instantiate(_eatFruit, transform.position, transform.rotation);
                 Destroy(fru, 5f);
                 _healthScript.PlusDamage(20);
@@ -123,7 +123,7 @@ namespace Levels
 
             if (superMushroomScript != null)                       // контакт с супер грибом для перехода к новому уровню
             {
-                fruitAndMushrom = FruitAndMushrom.SuperMushroom;
+                //fruitAndMushrom = FruitAndMushrom.SuperMushroom;
                 GameObject win = Instantiate(_winExp, transform.position, transform.rotation);
                 Destroy(win, 5f);
                 _winGame.SetActive(true);
@@ -150,7 +150,7 @@ namespace Levels
 
             if (otherCol.gameObject.tag == "save1")                  //контакт с точкой сохранения1
             {
-                fruitAndMushrom = FruitAndMushrom.DotSave1;
+                //fruitAndMushrom = FruitAndMushrom.DotSave1;
                 if (otherCol.transform.position.x > _lifeScript.spawnPlayerCurent.x)                                                 //толькр если точка сохранения больше текущей по х
                 {
                     StartCoroutine(DotContr());
@@ -160,7 +160,7 @@ namespace Levels
             }
             if (otherCol.gameObject.tag == "save2")                  //контакт с точкой сохранения2
             {
-                fruitAndMushrom = FruitAndMushrom.DotSave2;
+                //fruitAndMushrom = FruitAndMushrom.DotSave2;
                 if (otherCol.transform.position.x > _lifeScript.spawnPlayerCurent.x)
                 {
                     StartCoroutine(DotContr());

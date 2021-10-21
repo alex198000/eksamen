@@ -1320,7 +1320,7 @@ RectTransform:
   - {fileID: 1092490046}
   - {fileID: 379896806}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1525,7 +1525,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &133317063
 MonoBehaviour:
@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acacd05bca2c5c84ba19d12648b5b05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockLevel: 2
+  _unlockLevel: 2
   _p1effectLost: {fileID: 2086982027}
   _pLost: {fileID: 1529710690}
   _pauseMenu: {fileID: 105696205}
@@ -4870,6 +4870,7 @@ GameObject:
   - component: {fileID: 280029939}
   - component: {fileID: 280029938}
   - component: {fileID: 280029937}
+  - component: {fileID: 280029940}
   - component: {fileID: 280029936}
   m_Layer: 5
   m_Name: Player
@@ -4910,13 +4911,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 967619291639319321}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: LeftMove
+        - m_Target: {fileID: 280029940}
+          m_TargetAssemblyTypeName: MainMenu.ButtonSound, Assembly-CSharp
+          m_MethodName: HoverSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4926,13 +4927,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 967619291639319321}
-          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-          m_MethodName: StopMove
+        - m_Target: {fileID: 280029940}
+          m_TargetAssemblyTypeName: MainMenu.ButtonSound, Assembly-CSharp
+          m_MethodName: KlickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4985,7 +4986,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 280029938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 133317063}
+        m_TargetAssemblyTypeName: Levels.SceneDrive, Assembly-CSharp
+        m_MethodName: PauseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &280029938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5024,6 +5037,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280029934}
   m_CullTransparentMesh: 1
+--- !u!114 &280029940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280029934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff55e3884bc2ae4abd6b0541c04d04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSdp: {fileID: 1529710695}
+  navod: {fileID: 8300000, guid: 1056b1b5982c81f4ab340260c75e75f7, type: 3}
+  click: {fileID: 8300000, guid: ec0cdb988ef7cbc4cb69d2eb34b93f76, type: 3}
 --- !u!1 &280562668
 GameObject:
   m_ObjectHideFlags: 0
@@ -7004,7 +7032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &399962744
 MonoBehaviour:
@@ -7018,14 +7046,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3021dfe3d18b0e54496b4a305f03c926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skeletonTag: Sceleton
+  _skeletonTag: Skeleton
   _player: {fileID: 967619291639319320}
   _SkeletonManager: {fileID: 160307441}
   _skeletonProperties:
-  - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
   - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
+  - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
   _healthScript: {fileID: 967619291639319324}
-  _waveCount: 25
+  _waveCount: 8
   _skeletonCount: 2
   _spawnRate: 2
   _waveRate: 2
@@ -7099,7 +7127,7 @@ Canvas:
   m_GameObject: {fileID: 404010242}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7109,7 +7137,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &404010246
 RectTransform:
@@ -7124,7 +7152,7 @@ RectTransform:
   m_Children:
   - {fileID: 1423326325}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14292,7 +14320,7 @@ Canvas:
   m_GameObject: {fileID: 830449671}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -14302,7 +14330,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &830449675
 RectTransform:
@@ -15899,7 +15927,7 @@ Canvas:
   m_GameObject: {fileID: 926848219}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -15909,7 +15937,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &926848223
 RectTransform:
@@ -15924,7 +15952,7 @@ RectTransform:
   m_Children:
   - {fileID: 1741588409}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17127,7 +17155,7 @@ RectTransform:
   - {fileID: 461023785}
   - {fileID: 2081289587}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17950,14 +17978,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d22a9ace057e649aad359dae7fb5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsToPool:
+  _itemsToPool:
   - pooledObject: {fileID: 2235517093124349137, guid: a22e67663f49f624d9c0b46cc7007cdd, type: 3}
-    pooledAmount: 10
+    pooledAmount: 2
     willGrow: 1
   - pooledObject: {fileID: 4605345831321986930, guid: 24abe8eef196e3d479c6595293b3002c, type: 3}
-    pooledAmount: 8
+    pooledAmount: 2
     willGrow: 1
-  pooledObjects: []
+  _pooledObjects: []
 --- !u!4 &1042392967
 Transform:
   m_ObjectHideFlags: 0
@@ -17970,7 +17998,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052517707
 GameObject:
@@ -20513,7 +20541,7 @@ Canvas:
   m_GameObject: {fileID: 1221233498}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -20523,7 +20551,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1221233502
 RectTransform:
@@ -20538,7 +20566,7 @@ RectTransform:
   m_Children:
   - {fileID: 1652008426}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -21532,8 +21560,8 @@ Canvas:
   m_GameObject: {fileID: 1266611231}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -21542,7 +21570,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1266611235
 RectTransform:
@@ -21557,7 +21585,7 @@ RectTransform:
   m_Children:
   - {fileID: 1506062682}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -23866,7 +23894,7 @@ Canvas:
   m_GameObject: {fileID: 1380724922}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1529710692}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -23876,7 +23904,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1380724926
 RectTransform:
@@ -23891,7 +23919,7 @@ RectTransform:
   m_Children:
   - {fileID: 1502585453}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35464,7 +35492,7 @@ RectTransform:
   - {fileID: 156690519}
   - {fileID: 1269469112}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35812,7 +35840,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2086982029
 AudioSource:
@@ -47855,7 +47883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2024899018}
   _hp: 0
-  _hpMax: 40
+  _hpMax: 200
   _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
   _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   _sceneDrive: {fileID: 133317063}

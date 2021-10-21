@@ -256,6 +256,7 @@ namespace MainMenu
             print(PlayerPrefs.GetInt("LevelSave"));
             PlayerPrefs.SetInt("LevelSave", 1);
             PlayerPrefs.SetInt("Record", 0);
+            PlayerPrefs.SetInt("Coins", 0);
         }
 
         public void Start1Button()

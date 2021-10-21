@@ -4,40 +4,40 @@ namespace Levels
 {
     public class SkeletonMoove : MonoBehaviour
     {
-        private Rigidbody rb;
-        private MeshRenderer mr;
-        [SerializeField] private SpriteRenderer spriteSkeleton;
-        [SerializeField] private SkeletonHealth skeletonHealth;
-        [SerializeField] private BoxCollider2D colider;
-        [SerializeField] private SkeletonProperty skeletonProperty;
-        [SerializeField] private Vector3 diraction;
+        private Rigidbody _rb;
+        private MeshRenderer _mr;
+        [SerializeField] private SpriteRenderer _spriteSkeleton;
+        [SerializeField] private SkeletonHealth _skeletonHealth;
+        [SerializeField] private BoxCollider2D _colider;
+        [SerializeField] private SkeletonProperty _skeletonProperty;
+        [SerializeField] private Vector3 _diraction;
 
 
         private void Awake()
         {
-            mr = GetComponent<MeshRenderer>();
-            rb = GetComponent<Rigidbody>();
-            colider = GetComponent<BoxCollider2D>();
-            spriteSkeleton = GetComponent<SpriteRenderer>();
-            skeletonHealth = GetComponent<SkeletonHealth>();
+            _mr = GetComponent<MeshRenderer>();
+            _rb = GetComponent<Rigidbody>();
+            _colider = GetComponent<BoxCollider2D>();
+            _spriteSkeleton = GetComponent<SpriteRenderer>();
+            _skeletonHealth = GetComponent<SkeletonHealth>();
         }
 
         void Update()
         {
-            transform.Translate(diraction * skeletonProperty.SpeedSkeleton * Time.deltaTime);
+            transform.Translate(_diraction * _skeletonProperty.SpeedSkeleton * Time.deltaTime);
         }
 
         public void SetPropertyToSkeleton(SkeletonProperty skeletonProperty)
         {
-            this.skeletonProperty = skeletonProperty;
+            this._skeletonProperty = skeletonProperty;
             transform.localScale = new Vector3(skeletonProperty.ScaleSkeleton.x, skeletonProperty.ScaleSkeleton.y, skeletonProperty.ScaleSkeleton.z);
-            skeletonHealth.HpMaxSkelet = skeletonProperty.SkeletonHealth;
-            skeletonHealth.HpSkelet = skeletonHealth.HpMaxSkelet;
-            spriteSkeleton.sprite = skeletonProperty.SkeletonSprite;
-            colider.size = skeletonProperty.SkeletonColl;
-            //mr.material = skeletonProperty.SkeletonColor;
+            _skeletonHealth.HpMaxSkelet = skeletonProperty.SkeletonHealth;
+            _skeletonHealth.HpSkelet = _skeletonHealth.HpMaxSkelet;
+            _spriteSkeleton.sprite = skeletonProperty.SkeletonSprite;
+            _colider.size = skeletonProperty.SkeletonColl;
+            //_mr.material = _skeletonProperty.SkeletonColor;
 
-            //transform.rotation = new Quaternion(skeletonProperty.SkeletonRotate.x, skeletonProperty.SkeletonRotate.y,skeletonProperty.SkeletonRotate.z, skeletonProperty.SkeletonRotate.w);
+            //transform.rotation = new Quaternion(_skeletonProperty.SkeletonRotate.x, _skeletonProperty.SkeletonRotate.y, _skeletonProperty.SkeletonRotate.z, _skeletonProperty.SkeletonRotate.w);
         }
     }
 }

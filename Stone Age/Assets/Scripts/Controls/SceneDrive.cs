@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -8,9 +7,7 @@ namespace Levels
 {
     public class SceneDrive : MonoBehaviour
     {
-        public static event Action GameWin;
-
-        [SerializeField] private int unlockLevel;
+        [SerializeField] private int _unlockLevel;
         [SerializeField] private GameObject _p1effectLost;
         [SerializeField] private GameObject _pLost;
         [SerializeField] private GameObject _pauseMenu;
@@ -28,17 +25,21 @@ namespace Levels
         [SerializeField] private Text _textSceletonPlus;
         [SerializeField] private Text _textSceletonMinus;
 
-        public int UnlockLevel { get => unlockLevel; set => unlockLevel = value; }
-
+        public int UnlockLevel { get => _unlockLevel; set => _unlockLevel = value; }
+       
         private void OnEnable()
         {
             SkeletonHealth.OnSceletonPlus += UpdateSceleton;
             ObjectDestro.OnSceletonMinus += UpdateSceleton;
+            ScoreManager.GameWin += CoinsPlus;
+            ScoreManager.GameWin += WinGame;
         }
         private void OnDisable()
         {
             SkeletonHealth.OnSceletonPlus -= UpdateSceleton;
             ObjectDestro.OnSceletonMinus -= UpdateSceleton;
+            ScoreManager.GameWin -= CoinsPlus;
+            ScoreManager.GameWin -= WinGame;
         }
 
         void Start()
@@ -64,19 +65,24 @@ namespace Levels
         void Update()
         {
             ESCbutton();
+        }
 
-            if (_scoreManager.Score >= _scoreManager.ScoreGameWin)
+        public void PauseButton()
+        {
+            if (_winGame.activeSelf != true && _loseGame.activeSelf != true)
             {
-                GameWin?.Invoke();
-                _winGame.SetActive(true);
-               // Time.timeScale = 0;
-                if (PlayerPrefs.GetInt("LevelSave") < unlockLevel)
+                if (_pauseMenu.activeSelf == false)
                 {
-                    PlayerPrefs.SetInt("LevelSave", unlockLevel);
+                    _pauseMenu.SetActive(true);
+                    Time.timeScale = 0;
+                }
+                else if (_pauseMenu.activeSelf == true)
+                {
+                    _pauseMenu.SetActive(false);
+                    Time.timeScale = 1;
                 }
             }
         }
-
         public void ResumeButton()
         {
             _pauseMenu.SetActive(false);
@@ -115,6 +121,19 @@ namespace Levels
             _exitMenu.SetActive(true);
         }
 
+        public void WinGame()
+        {
+            _winGame.SetActive(true);
+            if (PlayerPrefs.GetInt("LevelSave") < _unlockLevel)
+            {
+                PlayerPrefs.SetInt("LevelSave", _unlockLevel);
+            }
+        }
+        public void CoinsPlus()
+        {
+           _scoreManager.Coins += 25;
+            PlayerPrefs.SetInt("Coins", _scoreManager.Coins);
+        }
         public void MenuButton()
         {
             SceneManager.LoadScene(0);
@@ -129,7 +148,7 @@ namespace Levels
 
         public void NextLevelButton()
         {
-            SceneManager.LoadScene(unlockLevel);
+            SceneManager.LoadScene(_unlockLevel);
             Time.timeScale = 1;
             _scoreManager.Score = 0;
         }

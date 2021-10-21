@@ -13,9 +13,9 @@ namespace Levels
     public class ObjectPooler : MonoBehaviour
     {
         public static ObjectPooler objectPooler;
-        [SerializeField] private List<ObjectPoolItem> itemsToPool;
+        [SerializeField] private List<ObjectPoolItem> _itemsToPool;
 
-        [SerializeField] private List<GameObject> pooledObjects;
+        [SerializeField] private List<GameObject> _pooledObjects;
 
         private void Awake()
         {
@@ -23,28 +23,28 @@ namespace Levels
         }
         void Start()
         {
-            pooledObjects = new List<GameObject>();
-            foreach (ObjectPoolItem item in itemsToPool)
+            _pooledObjects = new List<GameObject>();
+            foreach (ObjectPoolItem item in _itemsToPool)
             {
                 for (int i = 0; i < item.pooledAmount; i++)
                 {
                     GameObject obj = (GameObject)Instantiate(item.pooledObject);
                     obj.SetActive(false);
-                    pooledObjects.Add(obj);
+                    _pooledObjects.Add(obj);
                 }
             }
         }
 
         public GameObject GetPooledObject(string tag)   // метод активации обьектов
         {
-            for (int i = 0; i < pooledObjects.Count; i++)
+            for (int i = 0; i < _pooledObjects.Count; i++)
             {
-                if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag) //pooledObjects[i].activeInHierarchy == false
+                if (!_pooledObjects[i].activeInHierarchy && _pooledObjects[i].tag == tag) //pooledObjects[i].activeInHierarchy == false
                 {
-                    return pooledObjects[i];
+                    return _pooledObjects[i];
                 }
             }
-            foreach (ObjectPoolItem item in itemsToPool)
+            foreach (ObjectPoolItem item in _itemsToPool)
             {
                 if (item.pooledObject.tag == tag)
                 {
@@ -52,7 +52,7 @@ namespace Levels
                     {
                         GameObject obj = Instantiate(item.pooledObject);
                         obj.SetActive(false);
-                        pooledObjects.Add(obj);
+                        _pooledObjects.Add(obj);
                         obj.transform.SetParent(transform);
                         return obj;
 

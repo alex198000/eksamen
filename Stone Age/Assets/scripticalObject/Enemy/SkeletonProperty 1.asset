@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skeletonSpeed: 1
   _skeletonScale: {x: 1, y: 1, z: 1}
-  _skeletonColor: {fileID: 0}
+  _skeletonColor: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   _skeletonSprite: {fileID: 21300032, guid: 2c06fc137f4d6824aa6eaaf5fc8ec5ad, type: 3}
   _skeletonHealth: 2
   _skeletonColl: {x: 2, y: 2}

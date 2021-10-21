@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5720f9daeac6c4fab3ec7848e43295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSkeleton: {fileID: 0}
-  skeletonHealth: {fileID: 0}
-  colider: {fileID: 0}
-  skeletonProperty: {fileID: 0}
-  diraction: {x: -1, y: 0, z: 0}
+  _spriteSkeleton: {fileID: 0}
+  _skeletonHealth: {fileID: 0}
+  _colider: {fileID: 0}
+  _skeletonProperty: {fileID: 0}
+  _diraction: {x: -1, y: 0, z: 0}
 --- !u!114 &3949549285442048122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711c35115bb527f49866b85c879ba129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSkelet: 0
-  hpMaxSkelet: 2
+  _hpSkelet: 0
+  _hpMaxSkelet: 5
   _hungerEvent: {fileID: 11400000, guid: 7d3f09e679193644db7191e0d0964d59, type: 2}
   _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
   _scoreEvent: {fileID: 11400000, guid: 4e98a0172610c544f81487aac347188d, type: 2}

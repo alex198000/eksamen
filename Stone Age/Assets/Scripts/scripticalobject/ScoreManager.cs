@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Levels
@@ -10,11 +11,13 @@ namespace Levels
         [SerializeField] private int _record;
         [SerializeField] private int _coins;
         [SerializeField] private int _scoreGameWin;
-
+       
         public int Score { get { return _score; } set { _score = value; } }
         public int Record { get { return _record; } set { _record = value; } }
         public int Coins { get { return _coins; } set { _coins = value; } }
         public int ScoreGameWin { get { return _scoreGameWin; } }
+
+        public static event Action GameWin;
 
         private void OnEnable()
         {
@@ -26,6 +29,10 @@ namespace Levels
         public void ScoreVal(int sco)
         {
             Score += sco;
+            if (Score >= ScoreGameWin)
+            {
+                GameWin?.Invoke();               
+            }
         }
 
         public void CoinseVal(int coin)
