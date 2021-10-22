@@ -10,19 +10,22 @@ namespace MainMenu
     public class MenuScript : MonoBehaviour
     {
         [SerializeField] private GameObject _pLost;
-        [SerializeField] private GameObject p1effectLost;
+        [SerializeField] private GameObject _p1effectLost;
+
         [SerializeField] private Image _soundLock;
         [SerializeField] private Image _musicLock;
         [SerializeField] private Image _effectLock;
         [SerializeField] private Image _lowLock;
         [SerializeField] private Image _mediumLock;
         [SerializeField] private Image _ultraLock;
+
         [SerializeField] private GameObject _exitMenu;
         [SerializeField] private GameObject _tochMenu;
         [SerializeField] private GameObject _canvasMenu;
         [SerializeField] private GameObject _setMenu;
         [SerializeField] private GameObject _levelMenu;
         [SerializeField] private GameObject _instructionMenu;
+
         [SerializeField] private int _musicOFF = 0;
         [SerializeField] private int _soundOFF = 0;
         [SerializeField] private int _musicON = 1;
@@ -30,11 +33,12 @@ namespace MainMenu
         [SerializeField] private int _effectOFF = 0;
         [SerializeField] private int _effectON = 1;
 
+        [SerializeField] private int _lvlcmplt;
         [SerializeField] private ScoreManager _scoreManager;
+
         [SerializeField] private TextMeshProUGUI _recordText;
         [SerializeField] private TextMeshProUGUI _coinsText;
-
-        [SerializeField] private int _lvlcmplt;
+       
         [SerializeField] private List<Button> _buttons;
         [SerializeField] private List<ParticleSystem> _particles;
 
@@ -96,7 +100,7 @@ namespace MainMenu
 
             if (PlayerPrefs.GetInt("Music1eff") == _effectOFF)             //отключение зыуковых эффектов
             {
-                p1effectLost.GetComponent<AudioSource>().mute = true;
+                _p1effectLost.GetComponent<AudioSource>().mute = true;
 
                 _effectLock.gameObject.SetActive(true);
                 foreach (ParticleSystem partikl in _particles)
@@ -107,7 +111,7 @@ namespace MainMenu
 
             else
             {
-                p1effectLost.GetComponent<AudioSource>().mute = false;
+                _p1effectLost.GetComponent<AudioSource>().mute = false;
 
                 _effectLock.gameObject.SetActive(false);
 
@@ -212,8 +216,8 @@ namespace MainMenu
         public void MusicEffectsButton()
         {
             //GetComponent<AudioSource>().Play();
-            p1effectLost.GetComponent<AudioSource>().mute = !p1effectLost.GetComponent<AudioSource>().mute;
-            if (p1effectLost.GetComponent<AudioSource>().mute == true)
+            _p1effectLost.GetComponent<AudioSource>().mute = !_p1effectLost.GetComponent<AudioSource>().mute;
+            if (_p1effectLost.GetComponent<AudioSource>().mute == true)
             {
 
                 PlayerPrefs.SetInt("Music1eff", _effectOFF);
@@ -304,6 +308,15 @@ namespace MainMenu
             if (PlayerPrefs.GetInt("LevelSave") >= 6)
             {
                 SceneManager.LoadScene(6);
+            }
+        }
+
+        public void Start7Button()
+        {
+            //GetComponent<AudioSource>().Play();
+            if (PlayerPrefs.GetInt("LevelSave") >= 7)
+            {
+                SceneManager.LoadScene(7);
             }
         }
 

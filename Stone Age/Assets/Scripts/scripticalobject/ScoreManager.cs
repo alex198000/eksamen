@@ -17,7 +17,7 @@ namespace Levels
         public int Coins { get { return _coins; } set { _coins = value; } }
         public int ScoreGameWin { get { return _scoreGameWin; } }
 
-        public static event Action GameWin;
+        public static event Action OnGameWin;
 
         private void OnEnable()
         {
@@ -31,7 +31,7 @@ namespace Levels
             Score += sco;
             if (Score >= ScoreGameWin)
             {
-                GameWin?.Invoke();               
+                OnGameWin?.Invoke();               
             }
         }
 

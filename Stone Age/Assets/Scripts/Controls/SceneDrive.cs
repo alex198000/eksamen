@@ -31,15 +31,15 @@ namespace Levels
         {
             SkeletonHealth.OnSceletonPlus += UpdateSceleton;
             ObjectDestro.OnSceletonMinus += UpdateSceleton;
-            ScoreManager.GameWin += CoinsPlus;
-            ScoreManager.GameWin += WinGame;
+            ScoreManager.OnGameWin += CoinsPlus;
+            ScoreManager.OnGameWin += WinGame;
         }
         private void OnDisable()
         {
             SkeletonHealth.OnSceletonPlus -= UpdateSceleton;
             ObjectDestro.OnSceletonMinus -= UpdateSceleton;
-            ScoreManager.GameWin -= CoinsPlus;
-            ScoreManager.GameWin -= WinGame;
+            ScoreManager.OnGameWin -= CoinsPlus;
+            ScoreManager.OnGameWin -= WinGame;
         }
 
         void Start()

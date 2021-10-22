@@ -13,6 +13,7 @@ namespace Levels
     public class ObjectPooler : MonoBehaviour
     {
         public static ObjectPooler objectPooler;
+
         [SerializeField] private List<ObjectPoolItem> _itemsToPool;
 
         [SerializeField] private List<GameObject> _pooledObjects;
