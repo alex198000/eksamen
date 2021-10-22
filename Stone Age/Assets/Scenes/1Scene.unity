@@ -7053,8 +7053,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
   - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
   _healthScript: {fileID: 967619291639319324}
-  _waveCount: 8
-  _skeletonCount: 2
+  _waveCount: 25
+  _skeletonCount: 1
   _spawnRate: 2
   _waveRate: 2
   _spawnPointPosition: {x: 0, y: 0, z: 0}

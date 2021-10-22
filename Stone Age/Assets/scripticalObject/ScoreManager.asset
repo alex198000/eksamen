@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ScoreManager
   m_EditorClassIdentifier: 
   _score: 0
-  _record: 0
-  _coins: 0
-  _scoreGameWin: 200
-  _sceneDrive: {fileID: 0}
+  _record: 200
+  _coins: 25
+  _scoreGameWin: 20000
