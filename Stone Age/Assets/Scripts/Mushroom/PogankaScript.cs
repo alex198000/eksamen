@@ -2,18 +2,15 @@ using UnityEngine;
 
 namespace Levels
 {
-    public class PogankaScript : MonoBehaviour
+    public class PogankaScript : BaseContact
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void Contact()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            _healthScript.TakeDamage(_bonusScore);
+            _healthScript.healthBar.SetHealth(_healthScript.Hp);
+            
+            GameObject dangerous = Instantiate(_effect, transform.position, transform.rotation);
+            Destroy(dangerous, 5f);
         }
     }
 }

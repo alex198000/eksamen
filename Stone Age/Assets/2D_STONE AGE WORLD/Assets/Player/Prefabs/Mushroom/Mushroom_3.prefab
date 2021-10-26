@@ -124,6 +124,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b4f3cf812e59d45930509d6919746e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bonusScore: 20
+  _bonusHp: 20
+  _effect: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _sceneDrive: {fileID: 0}
+  _healthScript: {fileID: 0}
+  _lifeScript: {fileID: 0}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
 --- !u!1 &4709991920413970930
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,13 +63,13 @@ namespace Levels
                 }
             }
         }
-        public void PlusDamage(int plus)                       //увеличение шкалы голода пери сьедании полезного
+        public void PlusDamage(int plusHp, int plusScore)                       //увеличение шкалы голода пери сьедании полезного
         {
-            _hp += plus;
+            _hp += plusHp;
             healthBar.SetHealth(_hp);
-            _scoreManager.ScoreVal(plus);
+            _scoreManager.ScoreVal(plusScore);
             _scoreEvent.Raise();
-            _hungerManager.HungerPlus(plus);
+            _hungerManager.HungerPlus(plusHp);
             _hungerEvent.Raise();
             if (_hp > _hpMax)
             {

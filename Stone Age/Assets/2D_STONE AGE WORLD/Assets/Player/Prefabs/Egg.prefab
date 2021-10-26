@@ -145,5 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fca4698aed7104384c123bf1f8bfbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus: 0
-  effect: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  _bonusScore: 22
+  _bonusHp: 75
+  _effect: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _sceneDrive: {fileID: 0}
+  _healthScript: {fileID: 0}
+  _lifeScript: {fileID: 0}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
