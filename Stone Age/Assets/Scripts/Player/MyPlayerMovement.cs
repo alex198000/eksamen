@@ -20,6 +20,16 @@ namespace Levels
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        private void OnEnable()
+        {
+            SuperMushroomScript.OnPlayerWin += PlayerWin;
+        }
+
+        private void OnDisable()
+        {
+            SuperMushroomScript.OnPlayerWin -= PlayerWin;
+        }
+
         private void FixedUpdate()
         {
             _rb.velocity = new Vector2(_currentPlayerSpeed * Time.deltaTime, _rb.velocity.y);
@@ -54,6 +64,11 @@ namespace Levels
         private void OnTriggerEnter2D(Collider2D collision)
         {
             _groundCheck = true;
+        }
+
+        private void PlayerWin()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

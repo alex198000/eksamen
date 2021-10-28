@@ -6,24 +6,27 @@ namespace Levels
 {
     public class LifeBar : MonoBehaviour
     {
-        public Slider slider;
-        [SerializeField] private Gradient gradient;
-        [SerializeField] private Image filLife;
-        [SerializeField] private TextMeshProUGUI lifeText;
+        [SerializeField] private Slider _slider;
+        [SerializeField] private Gradient _gradient;
+        [SerializeField] private Image _filLife;
+        [SerializeField] private TextMeshProUGUI _lifeText;
+
+        //public Slider Slider { get => _slider; set => _slider = value; }
+
         public void SetMaxLife(int life)
         {
-            slider.maxValue = life;
-            slider.value = life;
+            _slider.maxValue = life;
+            _slider.value = life;
 
-            //filLife.color = gradient.Evaluate(1f);
-            lifeText.color = gradient.Evaluate(1f);
+            //filLife.color = _gradient.Evaluate(1f);
+            _lifeText.color = _gradient.Evaluate(1f);
         }
         public void SetLife(int life)
         {
-            slider.value = life;
+            _slider.value = life;
 
-            //filLife.color = gradient.Evaluate(slider.normalizedValue);
-            lifeText.color = gradient.Evaluate(slider.normalizedValue);
+            //filLife.color = _gradient.Evaluate(slider.normalizedValue);
+            _lifeText.color = _gradient.Evaluate(_slider.normalizedValue);
         }
     }
 }

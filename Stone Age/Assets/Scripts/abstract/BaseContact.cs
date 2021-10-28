@@ -14,7 +14,22 @@ namespace Levels
         [SerializeField] protected LifeScript _lifeScript;
         [SerializeField] protected GameEvent _recordEvent;
         [SerializeField] protected GameEvent _lifeEvent;
-        public abstract void Contact();
+        //public abstract void Contact();
+        public virtual void Contact()
+        {
+            GameObject fru = Instantiate(_effect, transform.position, transform.rotation);
+            Destroy(fru, 5f);
+            _healthScript.PlusDamage(_bonusHp, _bonusScore);
+            _healthScript.HealthBar.SetHealth(_healthScript.Hp);
+            _scoreManager.RecordVal();
+            _recordEvent.Raise();
+            gameObject.SetActive(false);
+            if (_healthScript.Hp > _healthScript.HpMax)
+            {
+                _healthScript.HpMax = _healthScript.Hp;
+                _healthScript.HealthBar.SetMaxHealth(_healthScript.HpMax);
+            }
+        }
         
     }
 }

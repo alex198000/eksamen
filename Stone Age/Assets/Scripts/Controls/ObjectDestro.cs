@@ -31,18 +31,17 @@ namespace Levels
 
             if (lifeScript != null)                     //если упал игрок
             {
-                if (lifeScript.life > 1)                //используем поля healthScript
+                if (lifeScript.Life > 1)                //используем поля healthScript
                 {
-                    coll.gameObject.transform.position = lifeScript.spawnPlayerCurent;
+                    coll.gameObject.transform.position = lifeScript.SpawnPlayerCurent;
 
                     lifeScript.LifeDamage(1);
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
-                    lifeScript.lifeBar.SetLife(lifeScript.life);
+                    lifeScript.LifeBar.SetLife(lifeScript.Life);
                     healthScript.Hp = healthScript.HpMax;
-                    healthScript.healthBar.SetHealth(healthScript.Hp);
+                    healthScript.HealthBar.SetHealth(healthScript.Hp);
                     _hungerManager.Hunger = healthScript.HpMax;
-
                 }
                 else
                 {

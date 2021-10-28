@@ -16,14 +16,13 @@ namespace Levels
         [SerializeField] private HungerManager _hungerManager;
         [SerializeField] private GameObject _skeletonWin;
         [SerializeField] private GameObject _skeletonEffect;
-        [SerializeField] private GameObject _skeletonDeath;
-
-        
+        [SerializeField] private GameObject _skeletonDeath;        
 
         public int HpSkelet { get => _hpSkelet; set => _hpSkelet = value; }
         public int HpMaxSkelet { get => _hpMaxSkelet; set => _hpMaxSkelet = value; }
 
         public static event Action OnSceletonPlus;
+
         void OnEnable()
         {
             _hpSkelet = _hpMaxSkelet;
@@ -64,16 +63,16 @@ namespace Levels
                 Destroy(effectShot, 2f);
                 gameObject.SetActive(false);
 
-                if (lifeScript.life > 1)                //используем поля healthScript
+                if (lifeScript.Life > 1)                //используем поля healthScript
                 {
-                    col.gameObject.transform.position = lifeScript.spawnPlayerCurent;
+                    col.gameObject.transform.position = lifeScript.SpawnPlayerCurent;
 
                     lifeScript.LifeDamage(1);
                     _hungerManager.LifeVal(1);
                     _lifeEvent.Raise();
-                    lifeScript.lifeBar.SetLife(lifeScript.life);
+                    lifeScript.LifeBar.SetLife(lifeScript.Life);
                     healthScript.Hp = healthScript.HpMax;
-                    healthScript.healthBar.SetHealth(healthScript.Hp);
+                    healthScript.HealthBar.SetHealth(healthScript.Hp);
                     _hungerManager.Hunger = healthScript.HpMax;
                 }
                 else

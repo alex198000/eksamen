@@ -5637,7 +5637,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2818632, y: 7.19734}
+  m_Offset: {x: -2.0526762, y: -0.31808662}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5648,7 +5648,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5637264, y: 18.572681}
+  m_Size: {x: 2.0221004, y: 33.603535}
   m_EdgeRadius: 0
 --- !u!4 &319704173
 Transform:
@@ -5899,6 +5899,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 967619291639319320}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _muhomorInstr
+      value: 
+      objectReference: {fileID: 1221233498}
     - target: {fileID: 8718793824168233324, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: m_Name
       value: Mushroom_4 (2)
@@ -6425,8 +6445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be74ddd458921b04c8af17bc3a08a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 370664507}
-  gradient:
+  _slider: {fileID: 370664507}
+  _gradient:
     serializedVersion: 2
     key0: {r: 0.9339623, g: 0.09251513, b: 0.09251513, a: 1}
     key1: {r: 0.29495424, g: 0.11921501, b: 0.4433962, a: 1}
@@ -6455,8 +6475,8 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  filLife: {fileID: 1734518532}
-  lifeText: {fileID: 817396362}
+  _filLife: {fileID: 1734518532}
+  _lifeText: {fileID: 817396362}
 --- !u!114 &370664507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7053,10 +7073,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f4bf5dbaf143cf24da80be739cc06eab, type: 2}
   - {fileID: 11400000, guid: 49f141800414679499af2fb869276b5f, type: 2}
   _healthScript: {fileID: 967619291639319324}
-  _waveCount: 8
-  _skeletonCount: 2
-  _spawnRate: 2
-  _waveRate: 2
+  _waveCount: 25
+  _skeletonCount: 1
+  _spawnRate: 4
+  _waveRate: 4
   _spawnPointPosition: {x: 0, y: 0, z: 0}
   _dist: {x: 0, y: 0, z: 0}
 --- !u!1 &404010242
@@ -11276,7 +11296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 630134818}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -15302,6 +15321,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 3121048972750475996, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15312,7 +15343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121048972750475996, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.2424335
+      value: -12.08975
       objectReference: {fileID: 0}
     - target: {fileID: 3121048972750475996, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20469,7 +20500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1218608444}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -21906,6 +21936,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -22273,7 +22315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1288124455}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -23933,6 +23974,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 4432055857525507616, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
       propertyPath: m_Name
       value: Mushroom_6 (1)
@@ -24139,6 +24192,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -24149,7 +24214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0514889
+      value: -17.280695
       objectReference: {fileID: 0}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25217,6 +25282,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 967619291639319320}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _muhomorInstr
+      value: 
+      objectReference: {fileID: 1221233498}
     - target: {fileID: 8718793824168233324, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: m_Name
       value: Mushroom_4 (3)
@@ -27083,9 +27168,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
     - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
-      propertyPath: effect
+      propertyPath: _lifeScript
       value: 
-      objectReference: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -28157,7 +28250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604077994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.45, y: 21.5, z: -96.48137}
+  m_LocalPosition: {x: 71.45, y: 3.02, z: -96.48137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 917771085}
@@ -31635,10 +31728,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9154409320532215876}
     m_Modifications:
-    - target: {fileID: 2619431273981326623, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: -6919993977241979934, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
+      propertyPath: _winGame
+      value: 
+      objectReference: {fileID: 1020144481}
+    - target: {fileID: -6919993977241979934, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -6919993977241979934, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -6919993977241979934, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 2619431275660810424, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
       propertyPath: m_Name
       value: Mushroom_1
@@ -31653,7 +31758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2619431275660810425, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.78
+      value: 2.4478168
       objectReference: {fileID: 0}
     - target: {fileID: 2619431275660810425, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31686,10 +31791,6 @@ PrefabInstance:
     - target: {fileID: 2619431275660810425, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2619431275660810427, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a3067ebe29033b448596117ecea79e8, type: 3}
@@ -33334,7 +33435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1916602173}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -34160,6 +34260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981801992}
   - component: {fileID: 1981801993}
+  - component: {fileID: 1981801994}
   m_Layer: 0
   m_Name: Water
   m_TagString: Water
@@ -34209,6 +34310,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.0354576, y: 5.0236387}
   m_EdgeRadius: 0
+--- !u!114 &1981801994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981801991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4a2fe8eebbe5f469292442b9c97817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bonusScore: 0
+  _bonusHp: 0
+  _effect: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _sceneDrive: {fileID: 133317063}
+  _healthScript: {fileID: 967619291639319324}
+  _lifeScript: {fileID: 967619291639319327}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
+  _loseInstr: {fileID: 404010242}
+  _player: {fileID: 967619291639319320}
 --- !u!1 &1990001644
 GameObject:
   m_ObjectHideFlags: 0
@@ -34547,6 +34672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997513586}
   - component: {fileID: 1997513587}
+  - component: {fileID: 1997513588}
   m_Layer: 0
   m_Name: Water
   m_TagString: Water
@@ -34596,6 +34722,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.0354576, y: 5.0236387}
   m_EdgeRadius: 0
+--- !u!114 &1997513588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997513585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4a2fe8eebbe5f469292442b9c97817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bonusScore: 0
+  _bonusHp: 0
+  _effect: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _sceneDrive: {fileID: 133317063}
+  _healthScript: {fileID: 967619291639319324}
+  _lifeScript: {fileID: 967619291639319327}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
+  _loseInstr: {fileID: 404010242}
+  _player: {fileID: 967619291639319320}
 --- !u!1 &2002731856
 GameObject:
   m_ObjectHideFlags: 0
@@ -35001,6 +35151,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 3121048972750475996, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -37032,6 +37194,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -1068498688057367705, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 3121048972750475996, guid: 603db13f416194a408ff22f8fe3f2038, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -37525,7 +37699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 630134818}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -47685,8 +47858,8 @@ BoxCollider2D:
   m_Offset: {x: -0.055000007, y: -0.0049063563}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.59322035, y: 0.50248754}
-    oldSize: {x: 0.59, y: 2.01}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 2.56}
     newSize: {x: 0.59, y: 2.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -47754,7 +47927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 967512739874225459}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -47881,9 +48053,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d40151de3ce7ec42bfba870030e40b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 2024899018}
   _hp: 0
   _hpMax: 200
+  _healthBar: {fileID: 2024899018}
   _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
   _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   _sceneDrive: {fileID: 133317063}
@@ -47962,20 +48134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3f447f4caec22418318b184b748e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthScript: {fileID: 967619291639319324}
-  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
-  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
-  _sceneDrive: {fileID: 133317063}
   _lifeScript: {fileID: 967619291639319327}
-  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
-  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
-  _danger: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
-  _muhomorInstr: {fileID: 1221233498}
   _dotInstr: {fileID: 1380724922}
-  _loseInstr: {fileID: 404010242}
-  _winGame: {fileID: 1020144481}
   _winExp: {fileID: 8789293347002731060, guid: bbf86c38a1df24a4382e8282f9105266, type: 3}
-  _eatFruit: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  _effectEat: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _healthScript: {fileID: 967619291639319324}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
 --- !u!1 &967625348515811493
 GameObject:
   m_ObjectHideFlags: 0
@@ -48299,7 +48464,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 58.788452, y: -2.0118194}
+  m_Offset: {x: 10.559683, y: -2.0118194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -48310,7 +48475,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 119.71695, y: 5.0236387}
+  m_Size: {x: 23.259407, y: 5.0236387}
   m_EdgeRadius: 0
 --- !u!114 &967970504357068939
 MonoBehaviour:
@@ -48324,6 +48489,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4a2fe8eebbe5f469292442b9c97817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bonusScore: 0
+  _bonusHp: 0
+  _effect: {fileID: 8789293347002731060, guid: 90e137aad4603104998648d2a6982bcf, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
+  _sceneDrive: {fileID: 133317063}
+  _healthScript: {fileID: 967619291639319324}
+  _lifeScript: {fileID: 967619291639319327}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
+  _lifeEvent: {fileID: 11400000, guid: 13f8a510429f2c24da70ca41e7e8c5ca, type: 2}
+  _loseInstr: {fileID: 404010242}
+  _player: {fileID: 967619291639319320}
 --- !u!1 &967970506056245221
 GameObject:
   m_ObjectHideFlags: 0
@@ -49214,7 +49391,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5675db4a4d8e12347911934eb7b196fd, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 13af95a1dca0fa44c8abd54d2eb48cb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -49908,6 +50085,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 967619291639319320}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _muhomorInstr
+      value: 
+      objectReference: {fileID: 1221233498}
     - target: {fileID: 8718793824168233324, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: m_Name
       value: Mushroom_4 (1)
@@ -49922,7 +50119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8718793824168233325, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.167817
+      value: -22.5
       objectReference: {fileID: 0}
     - target: {fileID: 8718793824168233325, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49970,6 +50167,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 404352750}
     m_Modifications:
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -7019510897639486720, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 7658333990929187256, guid: f19bdb6ec25273a43a6cfa96685b4224, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -50158,6 +50367,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -6451464016596121596, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 4432055857525507616, guid: 0d3a61afa88308f46a6f39d6f6e35795, type: 3}
       propertyPath: m_Name
       value: Mushroom_6
@@ -50220,6 +50441,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -8062459579800054073, guid: 65bbb74456c192c4297211310865283f, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: -8062459579800054073, guid: 65bbb74456c192c4297211310865283f, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: -8062459579800054073, guid: 65bbb74456c192c4297211310865283f, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 4112469367417852865, guid: 65bbb74456c192c4297211310865283f, type: 3}
       propertyPath: m_Name
       value: Mushroom_2
@@ -50282,6 +50515,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: 4598300189479474757, guid: 5d1f3944871f15c46b0209b2a306b271, type: 3}
+      propertyPath: _lifeScript
+      value: 
+      objectReference: {fileID: 967619291639319327}
+    - target: {fileID: 4598300189479474757, guid: 5d1f3944871f15c46b0209b2a306b271, type: 3}
+      propertyPath: _sceneDrive
+      value: 
+      objectReference: {fileID: 133317063}
+    - target: {fileID: 4598300189479474757, guid: 5d1f3944871f15c46b0209b2a306b271, type: 3}
+      propertyPath: _healthScript
+      value: 
+      objectReference: {fileID: 967619291639319324}
     - target: {fileID: 4709991918599630501, guid: 5d1f3944871f15c46b0209b2a306b271, type: 3}
       propertyPath: m_Name
       value: Mushroom_3

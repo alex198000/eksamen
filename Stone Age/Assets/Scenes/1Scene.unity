@@ -5900,6 +5900,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
     - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 967619291639319320}
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: _lifeScript
       value: 
       objectReference: {fileID: 967619291639319327}
@@ -6441,8 +6445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be74ddd458921b04c8af17bc3a08a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 370664507}
-  gradient:
+  _slider: {fileID: 370664507}
+  _gradient:
     serializedVersion: 2
     key0: {r: 0.9339623, g: 0.09251513, b: 0.09251513, a: 1}
     key1: {r: 0.29495424, g: 0.11921501, b: 0.4433962, a: 1}
@@ -6471,8 +6475,8 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  filLife: {fileID: 1734518532}
-  lifeText: {fileID: 817396362}
+  _filLife: {fileID: 1734518532}
+  _lifeText: {fileID: 817396362}
 --- !u!114 &370664507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11292,7 +11296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 630134818}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -20497,7 +20500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1218608444}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -22313,7 +22315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1288124455}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -33434,7 +33435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1916602173}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -37699,7 +37699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 630134818}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: d92385510133e2148b7be84d3a2bdb7b, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -47928,7 +47927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 967512739874225459}
-  _bonusInstr: {fileID: 926848219}
   _explosion: {fileID: 1225327431615798439, guid: 9b28a9d1b9a87bb4f87a5007670c61a6, type: 3}
   _explosionDelete: {fileID: 0}
   _bonus: {fileID: 2497317634844692231, guid: 7ce5c060dda57254b85d1c3d0684e456, type: 3}
@@ -48055,9 +48053,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d40151de3ce7ec42bfba870030e40b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 2024899018}
   _hp: 0
   _hpMax: 200
+  _healthBar: {fileID: 2024899018}
   _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
   _hungerManager: {fileID: 11400000, guid: 676b978451cf2144eaf3ddaef969551e, type: 2}
   _sceneDrive: {fileID: 133317063}
@@ -48139,6 +48137,10 @@ MonoBehaviour:
   _lifeScript: {fileID: 967619291639319327}
   _dotInstr: {fileID: 1380724922}
   _winExp: {fileID: 8789293347002731060, guid: bbf86c38a1df24a4382e8282f9105266, type: 3}
+  _effectEat: {fileID: 8789293347002731060, guid: cd7f2931c5897914ba3e6ede09287bdc, type: 3}
+  _scoreManager: {fileID: 11400000, guid: 067984053f1c3c94d8b339ee7f17c822, type: 2}
+  _healthScript: {fileID: 967619291639319324}
+  _recordEvent: {fileID: 11400000, guid: dae2896d632b1ae46aaf4eb27517a3ce, type: 2}
 --- !u!1 &967625348515811493
 GameObject:
   m_ObjectHideFlags: 0
@@ -50083,6 +50085,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1416508603}
     m_Modifications:
+    - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 967619291639319320}
     - target: {fileID: -713869368082817722, guid: d440dc94e7efac54aa15f05002d3d258, type: 3}
       propertyPath: _lifeScript
       value: 

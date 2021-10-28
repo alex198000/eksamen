@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Levels
@@ -7,13 +5,13 @@ namespace Levels
     public class WoodScript : MonoBehaviour
     {
         [SerializeField] private Animation _anim;
-        [SerializeField] private GameObject _bonusInstr;
+        //[SerializeField] private GameObject _bonusInstr;
         [SerializeField] private GameObject _explosion;
         [SerializeField] private GameObject _explosionDelete;
         [SerializeField] private GameObject _bonus;
-        private int _instrCount = 1;
+        //private int _instrCount = 1;
        
-        void OnTriggerEnter2D(Collider2D otherCol)                                //падают листики, появляется бонус и инструкция как его получить
+        void OnTriggerEnter2D(Collider2D otherCol)                                //падают листики, появляется бонус 
         {
             if (otherCol.gameObject.tag == "Weapon")
             {
@@ -24,7 +22,7 @@ namespace Levels
                 Instantiate(_bonus, transform.position, transform.rotation);
 
                 Destroy(_explosionDelete, 7f);
-                StartCoroutine(InstrBonus());
+                //StartCoroutine(InstrBonus());
 
             }
         }
@@ -36,17 +34,17 @@ namespace Levels
 
             }
         }
-        IEnumerator InstrBonus()
-        {
+        //IEnumerator InstrBonus()
+        //{
 
-            while (_instrCount > 0)
-            {
+        //    while (_instrCount > 0)
+        //    {
 
-                _bonusInstr.SetActive(true);
-                yield return new WaitForSeconds(4);
-                _bonusInstr.SetActive(false);
-                _instrCount--;
-            }
-        }
+        //        _bonusInstr.SetActive(true);
+        //        yield return new WaitForSeconds(4);
+        //        _bonusInstr.SetActive(false);
+        //        _instrCount--;
+        //    }
+        //}
     }
 }

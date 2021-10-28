@@ -5,11 +5,11 @@ namespace Levels
 {
     public class LifeScript : MonoBehaviour
     {
-        public LifeBar lifeBar;
-        public int life;
-        public int lifeMax = 11;
-        public Vector3 spawnPlayer;
-        public Vector3 spawnPlayerCurent;
+        [SerializeField] private LifeBar lifeBar;
+        [SerializeField] private int life;
+        [SerializeField] private int lifeMax = 11;
+        [SerializeField] private Vector3 spawnPlayer;
+        [SerializeField] private Vector3 spawnPlayerCurent;
         [SerializeField] private HungerManager _hungerManager;
         [SerializeField] private GameEvent _lifeEvent;
         [SerializeField] private SceneDrive _sceneDrive;
@@ -17,6 +17,12 @@ namespace Levels
         [SerializeField] private GameObject _loseGame;
         [SerializeField] private GameObject _defExp;
         [SerializeField] private GameObject _lifeInstr;
+
+        public int LifeMax { get => lifeMax; set => lifeMax = value; }
+        public int Life { get => life; set => life = value; }
+        public LifeBar LifeBar { get => lifeBar; set => lifeBar = value; }
+        public Vector3 SpawnPlayer { get => spawnPlayer; set => spawnPlayer = value; }
+        public Vector3 SpawnPlayerCurent { get => spawnPlayerCurent; set => spawnPlayerCurent = value; }
 
         void Start()
         {
@@ -37,7 +43,7 @@ namespace Levels
             lifeBar.SetLife(life);
             _healthScript.Hp = 0;
             _hungerManager.Hunger = _healthScript.Hp;
-            _healthScript.healthBar.SetHealth(_healthScript.Hp);
+            _healthScript.HealthBar.SetHealth(_healthScript.Hp);
             GameObject def = Instantiate(_defExp, transform.position, transform.rotation);
             Destroy(def, 5f);
             _sceneDrive.UpdateScore();                             // обновляем юай здоровья
@@ -62,7 +68,7 @@ namespace Levels
             if (life >= 1)
             {
                 _lifeInstr.SetActive(true);
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(2f);
                 _lifeInstr.SetActive(false);
             }
         }
